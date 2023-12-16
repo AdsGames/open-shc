@@ -1,0 +1,14 @@
+{
+  "files.associations": {
+    "iostream": "cpp",
+    "iosfwd": "cpp",
+    "filesystem": "cpp",
+    "functional": "cpp",
+    "string": "cpp",
+    "ostream": "cpp",
+    "cstddef": "cpp",
+    "fstream": "cpp",
+    "*.tcc": "cpp"
+  },
+  "sonarlint.pathToCompileCommands": "${workspaceFolder}/compile_commands.json"
+}

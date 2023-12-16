@@ -1,0 +1,28 @@
+{
+  "textures": [
+    {
+      "id": "armylbd",
+      "path": "assets/proprietary/gfx/armylbd.tgx"
+    },
+    {
+      "id": "frontend_loading",
+      "path": "assets/proprietary/gfx/frontend_loading.tgx"
+    },
+    {
+      "id": "frontend_main",
+      "path": "assets/proprietary/gfx/frontend_main.tgx"
+    }
+  ],
+  "animations": [
+    {
+      "id": "anim_armourer",
+      "path": "assets/proprietary/gm/anim_armourer.gm1"
+    }
+  ],
+  "music": [
+    {
+      "id": "a_pane_in_the_glass",
+      "path": "assets/proprietary/soundtrack/A Pane in the Glass.mp3"
+    }
+  ]
+}
