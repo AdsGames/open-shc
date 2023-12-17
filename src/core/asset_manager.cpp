@@ -28,7 +28,7 @@ void AssetManager::init(const std::string &config_file_path)
         std::cout << "Loading texture: " << curr["id"] << std::endl;
         Texture t;
         t.load(curr["path"]);
-        textures[curr["id"]] = t;
+        this->m_textures[curr["id"]] = t;
     }
 
     // Load animations
@@ -37,7 +37,7 @@ void AssetManager::init(const std::string &config_file_path)
         std::cout << "Loading animation: " << curr["id"] << std::endl;
         Animation a;
         a.load(curr["path"]);
-        animations[curr["id"]] = a;
+        this->m_animations[curr["id"]] = a;
     }
 
     // Load music
@@ -46,7 +46,7 @@ void AssetManager::init(const std::string &config_file_path)
         std::cout << "Loading music: " << curr["id"] << std::endl;
         Music m;
         m.load(curr["path"]);
-        this->music[curr["id"]] = m;
+        this->m_music[curr["id"]] = m;
     }
 
     // Load sounds
@@ -55,32 +55,59 @@ void AssetManager::init(const std::string &config_file_path)
         std::cout << "Loading sound: " << curr["id"] << std::endl;
         Sound s;
         s.load(curr["path"]);
-        this->sounds[curr["id"]] = s;
+        this->m_sounds[curr["id"]] = s;
+    }
+
+    // Load fonts
+    for (auto &curr : j["fonts"])
+    {
+        std::cout << "Loading font: " << curr["id"] << std::endl;
+        Font f;
+        f.load(curr["path"], curr["size"]);
+        this->m_fonts[curr["id"]] = f;
     }
 }
 
 // Get texture
 Texture AssetManager::get_texture(const std::string &id)
 {
-    return textures[id];
+    return this->m_textures[id];
 }
 
 // Get animation
 Animation AssetManager::get_animation(const std::string &id)
 {
-    return animations[id];
+    return this->m_animations[id];
 }
 
 // Get sound
 Sound AssetManager::get_sound(const std::string &id)
 {
-    return sounds[id];
+    return this->m_sounds[id];
 }
 
 // Get music
 Music AssetManager::get_music(const std::string &id)
 {
-    return music[id];
+    return this->m_music[id];
+}
+
+// Get font
+Font AssetManager::get_font(const std::string &id)
+{
+    return this->m_fonts[id];
+}
+
+// Get all textures as ref
+TextureMap &AssetManager::get_textures()
+{
+    return this->m_textures;
+}
+
+// Get all animations as ref
+AnimationMap &AssetManager::get_animations()
+{
+    return this->m_animations;
 }
 
 } // namespace oshc::core::asset

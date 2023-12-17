@@ -1,10 +1,10 @@
 {
   "configurations": [
     {
-      "name": "Win32",
+      "name": "default",
       "includePath": ["${default}"],
       "defines": ["_DEBUG", "UNICODE", "_UNICODE"],
-      "compileCommands": "${workspaceFolder}/compile_commands.json",
+      "compileCommands": "${workspaceFolder}/build/compile_commands.json",
       "configurationProvider": "ms-vscode.cmake-tools",
       "cppStandard": "c++20",
       "intelliSenseMode": "gcc-x64"

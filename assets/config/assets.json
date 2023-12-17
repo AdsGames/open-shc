@@ -1,22 +1,2693 @@
 {
+  "fonts": [
+    {
+      "id": "default",
+      "path": "assets/fonts/dosis.ttf",
+      "size": 16
+    }
+  ],
   "textures": [
+    {
+      "id": "1280r",
+      "path": "assets/proprietary/gfx/1280r.tgx"
+    },
+    {
+      "id": "Bink256",
+      "path": "assets/proprietary/gfx/Bink256.tgx"
+    },
+    {
+      "id": "Building_siege_equipment_help",
+      "path": "assets/proprietary/gfx/Building_siege_equipment_help.tgx"
+    },
+    {
+      "id": "Crenulated_walls_help",
+      "path": "assets/proprietary/gfx/Crenulated_walls_help.tgx"
+    },
+    {
+      "id": "Crusader_Win",
+      "path": "assets/proprietary/gfx/Crusader_Win.tgx"
+    },
+    {
+      "id": "Demo_Back",
+      "path": "assets/proprietary/gfx/Demo_Back.tgx"
+    },
+    {
+      "id": "SHCX_Map",
+      "path": "assets/proprietary/gfx/SHCX_Map.tgx"
+    },
+    {
+      "id": "SHC_Back",
+      "path": "assets/proprietary/gfx/SHC_Back.tgx"
+    },
+    {
+      "id": "ST02_House",
+      "path": "assets/proprietary/gfx/ST02_House.tgx"
+    },
+    {
+      "id": "ST03_Woodcutters_Hut",
+      "path": "assets/proprietary/gfx/ST03_Woodcutters_Hut.tgx"
+    },
+    {
+      "id": "ST04_Oxen_Base",
+      "path": "assets/proprietary/gfx/ST04_Oxen_Base.tgx"
+    },
+    {
+      "id": "ST05_Iron_Mine",
+      "path": "assets/proprietary/gfx/ST05_Iron_Mine.tgx"
+    },
+    {
+      "id": "ST06_Pitch_Digger",
+      "path": "assets/proprietary/gfx/ST06_Pitch_Digger.tgx"
+    },
+    {
+      "id": "ST07_Hunters_Hut",
+      "path": "assets/proprietary/gfx/ST07_Hunters_Hut.tgx"
+    },
+    {
+      "id": "ST08_Barracks",
+      "path": "assets/proprietary/gfx/ST08_Barracks.tgx"
+    },
+    {
+      "id": "ST08_mercenary_post",
+      "path": "assets/proprietary/gfx/ST08_mercenary_post.tgx"
+    },
+    {
+      "id": "ST10_Goods_Yard",
+      "path": "assets/proprietary/gfx/ST10_Goods_Yard.tgx"
+    },
+    {
+      "id": "ST11_Armoury",
+      "path": "assets/proprietary/gfx/ST11_Armoury.tgx"
+    },
+    {
+      "id": "ST12_Fletchers_Workshop",
+      "path": "assets/proprietary/gfx/ST12_Fletchers_Workshop.tgx"
+    },
+    {
+      "id": "ST13_Blacksmiths_Workshop",
+      "path": "assets/proprietary/gfx/ST13_Blacksmiths_Workshop.tgx"
+    },
+    {
+      "id": "ST14_Poleturners_Workshop",
+      "path": "assets/proprietary/gfx/ST14_Poleturners_Workshop.tgx"
+    },
+    {
+      "id": "ST15_Armourers_Workshop",
+      "path": "assets/proprietary/gfx/ST15_Armourers_Workshop.tgx"
+    },
+    {
+      "id": "ST16_Tanners_Workshop",
+      "path": "assets/proprietary/gfx/ST16_Tanners_Workshop.tgx"
+    },
+    {
+      "id": "ST17_Bakers_Workshop",
+      "path": "assets/proprietary/gfx/ST17_Bakers_Workshop.tgx"
+    },
+    {
+      "id": "ST18_Brewers_Workshop",
+      "path": "assets/proprietary/gfx/ST18_Brewers_Workshop.tgx"
+    },
+    {
+      "id": "ST19_Granary",
+      "path": "assets/proprietary/gfx/ST19_Granary.tgx"
+    },
+    {
+      "id": "ST20_Quarry",
+      "path": "assets/proprietary/gfx/ST20_Quarry.tgx"
+    },
+    {
+      "id": "ST22_Inn",
+      "path": "assets/proprietary/gfx/ST22_Inn.tgx"
+    },
+    {
+      "id": "ST23_Healer",
+      "path": "assets/proprietary/gfx/ST23_Healer.tgx"
+    },
+    {
+      "id": "ST24_Engineers_Guild",
+      "path": "assets/proprietary/gfx/ST24_Engineers_Guild.tgx"
+    },
+    {
+      "id": "ST25_Tunnellers_Guild",
+      "path": "assets/proprietary/gfx/ST25_Tunnellers_Guild.tgx"
+    },
+    {
+      "id": "ST26_Tradepost",
+      "path": "assets/proprietary/gfx/ST26_Tradepost.tgx"
+    },
+    {
+      "id": "ST27_Well",
+      "path": "assets/proprietary/gfx/ST27_Well.tgx"
+    },
+    {
+      "id": "ST28_Oil_Smelter",
+      "path": "assets/proprietary/gfx/ST28_Oil_Smelter.tgx"
+    },
+    {
+      "id": "ST30_Wheatfarm",
+      "path": "assets/proprietary/gfx/ST30_Wheatfarm.tgx"
+    },
+    {
+      "id": "ST31_Hopsfarm",
+      "path": "assets/proprietary/gfx/ST31_Hopsfarm.tgx"
+    },
+    {
+      "id": "ST32_Applefarm",
+      "path": "assets/proprietary/gfx/ST32_Applefarm.tgx"
+    },
+    {
+      "id": "ST33_Cattlefarm",
+      "path": "assets/proprietary/gfx/ST33_Cattlefarm.tgx"
+    },
+    {
+      "id": "ST34_Mill",
+      "path": "assets/proprietary/gfx/ST34_Mill.tgx"
+    },
+    {
+      "id": "ST35_Stables",
+      "path": "assets/proprietary/gfx/ST35_Stables.tgx"
+    },
+    {
+      "id": "ST36_Church",
+      "path": "assets/proprietary/gfx/ST36_Church.tgx"
+    },
+    {
+      "id": "ST40_Keep_One",
+      "path": "assets/proprietary/gfx/ST40_Keep_One.tgx"
+    },
+    {
+      "id": "ST41_Keep_Two",
+      "path": "assets/proprietary/gfx/ST41_Keep_Two.tgx"
+    },
+    {
+      "id": "ST42_Keep_Three",
+      "path": "assets/proprietary/gfx/ST42_Keep_Three.tgx"
+    },
+    {
+      "id": "ST43_Keep_Four",
+      "path": "assets/proprietary/gfx/ST43_Keep_Four.tgx"
+    },
+    {
+      "id": "ST44_Keep_Five",
+      "path": "assets/proprietary/gfx/ST44_Keep_Five.tgx"
+    },
+    {
+      "id": "ST45_Gate_Main",
+      "path": "assets/proprietary/gfx/ST45_Gate_Main.tgx"
+    },
+    {
+      "id": "ST49_Drawbridge",
+      "path": "assets/proprietary/gfx/ST49_Drawbridge.tgx"
+    },
+    {
+      "id": "ST50_Tunnel_Enterance",
+      "path": "assets/proprietary/gfx/ST50_Tunnel_Enterance.tgx"
+    },
+    {
+      "id": "ST54_Killing_Pit",
+      "path": "assets/proprietary/gfx/ST54_Killing_Pit.tgx"
+    },
+    {
+      "id": "ST62_Gallows",
+      "path": "assets/proprietary/gfx/ST62_Gallows.tgx"
+    },
+    {
+      "id": "ST65_Maypole",
+      "path": "assets/proprietary/gfx/ST65_Maypole.tgx"
+    },
+    {
+      "id": "ST74_Tower1",
+      "path": "assets/proprietary/gfx/ST74_Tower1.tgx"
+    },
+    {
+      "id": "ST74_Tower2",
+      "path": "assets/proprietary/gfx/ST74_Tower2.tgx"
+    },
+    {
+      "id": "ST74_Tower3",
+      "path": "assets/proprietary/gfx/ST74_Tower3.tgx"
+    },
+    {
+      "id": "ST74_Tower4",
+      "path": "assets/proprietary/gfx/ST74_Tower4.tgx"
+    },
+    {
+      "id": "ST74_Tower5",
+      "path": "assets/proprietary/gfx/ST74_Tower5.tgx"
+    },
+    {
+      "id": "ST74_Towers",
+      "path": "assets/proprietary/gfx/ST74_Towers.tgx"
+    },
+    {
+      "id": "ST80_Seige_Tents",
+      "path": "assets/proprietary/gfx/ST80_Seige_Tents.tgx"
+    },
+    {
+      "id": "ST80_Siege_Tent",
+      "path": "assets/proprietary/gfx/ST80_Siege_Tent.tgx"
+    },
+    {
+      "id": "ST85_Tunnel_Construction",
+      "path": "assets/proprietary/gfx/ST85_Tunnel_Construction.tgx"
+    },
+    {
+      "id": "anim_stocks",
+      "path": "assets/proprietary/gfx/anim_stocks.tgx"
+    },
+    {
+      "id": "armourer_sketch",
+      "path": "assets/proprietary/gfx/armourer_sketch.tgx"
+    },
+    {
+      "id": "army",
+      "path": "assets/proprietary/gfx/army.tgx"
+    },
+    {
+      "id": "army2",
+      "path": "assets/proprietary/gfx/army2.tgx"
+    },
+    {
+      "id": "army_sketch",
+      "path": "assets/proprietary/gfx/army_sketch.tgx"
+    },
+    {
+      "id": "armybar",
+      "path": "assets/proprietary/gfx/armybar.tgx"
+    },
     {
       "id": "armylbd",
       "path": "assets/proprietary/gfx/armylbd.tgx"
+    },
+    {
+      "id": "armyrbd",
+      "path": "assets/proprietary/gfx/armyrbd.tgx"
+    },
+    {
+      "id": "armys1",
+      "path": "assets/proprietary/gfx/armys1.tgx"
+    },
+    {
+      "id": "armys10",
+      "path": "assets/proprietary/gfx/armys10.tgx"
+    },
+    {
+      "id": "armys11",
+      "path": "assets/proprietary/gfx/armys11.tgx"
+    },
+    {
+      "id": "armys12",
+      "path": "assets/proprietary/gfx/armys12.tgx"
+    },
+    {
+      "id": "armys13",
+      "path": "assets/proprietary/gfx/armys13.tgx"
+    },
+    {
+      "id": "armys14",
+      "path": "assets/proprietary/gfx/armys14.tgx"
+    },
+    {
+      "id": "armys15",
+      "path": "assets/proprietary/gfx/armys15.tgx"
+    },
+    {
+      "id": "armys16",
+      "path": "assets/proprietary/gfx/armys16.tgx"
+    },
+    {
+      "id": "armys17",
+      "path": "assets/proprietary/gfx/armys17.tgx"
+    },
+    {
+      "id": "armys18",
+      "path": "assets/proprietary/gfx/armys18.tgx"
+    },
+    {
+      "id": "armys19",
+      "path": "assets/proprietary/gfx/armys19.tgx"
+    },
+    {
+      "id": "armys2",
+      "path": "assets/proprietary/gfx/armys2.tgx"
+    },
+    {
+      "id": "armys20",
+      "path": "assets/proprietary/gfx/armys20.tgx"
+    },
+    {
+      "id": "armys21",
+      "path": "assets/proprietary/gfx/armys21.tgx"
+    },
+    {
+      "id": "armys22",
+      "path": "assets/proprietary/gfx/armys22.tgx"
+    },
+    {
+      "id": "armys23",
+      "path": "assets/proprietary/gfx/armys23.tgx"
+    },
+    {
+      "id": "armys24",
+      "path": "assets/proprietary/gfx/armys24.tgx"
+    },
+    {
+      "id": "armys25",
+      "path": "assets/proprietary/gfx/armys25.tgx"
+    },
+    {
+      "id": "armys26",
+      "path": "assets/proprietary/gfx/armys26.tgx"
+    },
+    {
+      "id": "armys3",
+      "path": "assets/proprietary/gfx/armys3.tgx"
+    },
+    {
+      "id": "armys4",
+      "path": "assets/proprietary/gfx/armys4.tgx"
+    },
+    {
+      "id": "armys5",
+      "path": "assets/proprietary/gfx/armys5.tgx"
+    },
+    {
+      "id": "armys6",
+      "path": "assets/proprietary/gfx/armys6.tgx"
+    },
+    {
+      "id": "armys7",
+      "path": "assets/proprietary/gfx/armys7.tgx"
+    },
+    {
+      "id": "armys8",
+      "path": "assets/proprietary/gfx/armys8.tgx"
+    },
+    {
+      "id": "armys9",
+      "path": "assets/proprietary/gfx/armys9.tgx"
+    },
+    {
+      "id": "armysbar",
+      "path": "assets/proprietary/gfx/armysbar.tgx"
+    },
+    {
+      "id": "attacking_units",
+      "path": "assets/proprietary/gfx/attacking_units.tgx"
+    },
+    {
+      "id": "baker_sketch",
+      "path": "assets/proprietary/gfx/baker_sketch.tgx"
+    },
+    {
+      "id": "bakery_sketch",
+      "path": "assets/proprietary/gfx/bakery_sketch.tgx"
+    },
+    {
+      "id": "black",
+      "path": "assets/proprietary/gfx/black.tgx"
+    },
+    {
+      "id": "blacksmith_sketch",
+      "path": "assets/proprietary/gfx/blacksmith_sketch.tgx"
+    },
+    {
+      "id": "bmonk",
+      "path": "assets/proprietary/gfx/bmonk.tgx"
+    },
+    {
+      "id": "boiling_oil_help",
+      "path": "assets/proprietary/gfx/boiling_oil_help.tgx"
+    },
+    {
+      "id": "brazier",
+      "path": "assets/proprietary/gfx/brazier.tgx"
+    },
+    {
+      "id": "brewer_sketch",
+      "path": "assets/proprietary/gfx/brewer_sketch.tgx"
+    },
+    {
+      "id": "briefing_back0",
+      "path": "assets/proprietary/gfx/briefing_back0.tgx"
+    },
+    {
+      "id": "briefing_back1",
+      "path": "assets/proprietary/gfx/briefing_back1.tgx"
+    },
+    {
+      "id": "briefing_back10",
+      "path": "assets/proprietary/gfx/briefing_back10.tgx"
+    },
+    {
+      "id": "briefing_back11",
+      "path": "assets/proprietary/gfx/briefing_back11.tgx"
+    },
+    {
+      "id": "briefing_back12",
+      "path": "assets/proprietary/gfx/briefing_back12.tgx"
+    },
+    {
+      "id": "briefing_back2",
+      "path": "assets/proprietary/gfx/briefing_back2.tgx"
+    },
+    {
+      "id": "briefing_back3",
+      "path": "assets/proprietary/gfx/briefing_back3.tgx"
+    },
+    {
+      "id": "briefing_back4",
+      "path": "assets/proprietary/gfx/briefing_back4.tgx"
+    },
+    {
+      "id": "briefing_back5",
+      "path": "assets/proprietary/gfx/briefing_back5.tgx"
+    },
+    {
+      "id": "briefing_back6",
+      "path": "assets/proprietary/gfx/briefing_back6.tgx"
+    },
+    {
+      "id": "briefing_back7",
+      "path": "assets/proprietary/gfx/briefing_back7.tgx"
+    },
+    {
+      "id": "briefing_back8",
+      "path": "assets/proprietary/gfx/briefing_back8.tgx"
+    },
+    {
+      "id": "briefing_back9",
+      "path": "assets/proprietary/gfx/briefing_back9.tgx"
+    },
+    {
+      "id": "briefing_screen_background",
+      "path": "assets/proprietary/gfx/briefing_screen_background.tgx"
+    },
+    {
+      "id": "bsmith_sketch",
+      "path": "assets/proprietary/gfx/bsmith_sketch.tgx"
+    },
+    {
+      "id": "bullet",
+      "path": "assets/proprietary/gfx/bullet.tgx"
+    },
+    {
+      "id": "bullet2",
+      "path": "assets/proprietary/gfx/bullet2.tgx"
+    },
+    {
+      "id": "buyit_logo",
+      "path": "assets/proprietary/gfx/buyit_logo.tgx"
+    },
+    {
+      "id": "c1pic",
+      "path": "assets/proprietary/gfx/c1pic.tgx"
+    },
+    {
+      "id": "c2pic",
+      "path": "assets/proprietary/gfx/c2pic.tgx"
+    },
+    {
+      "id": "c3pic",
+      "path": "assets/proprietary/gfx/c3pic.tgx"
+    },
+    {
+      "id": "c4pic",
+      "path": "assets/proprietary/gfx/c4pic.tgx"
+    },
+    {
+      "id": "campfire_sketch",
+      "path": "assets/proprietary/gfx/campfire_sketch.tgx"
+    },
+    {
+      "id": "cess_pit_sketch",
+      "path": "assets/proprietary/gfx/cess_pit_sketch.tgx"
+    },
+    {
+      "id": "chartest",
+      "path": "assets/proprietary/gfx/chartest.tgx"
+    },
+    {
+      "id": "chicken_sketch",
+      "path": "assets/proprietary/gfx/chicken_sketch.tgx"
+    },
+    {
+      "id": "child_sketch",
+      "path": "assets/proprietary/gfx/child_sketch.tgx"
+    },
+    {
+      "id": "chimp00_null",
+      "path": "assets/proprietary/gfx/chimp00_null.tgx"
+    },
+    {
+      "id": "chimp05_tunneler",
+      "path": "assets/proprietary/gfx/chimp05_tunneler.tgx"
+    },
+    {
+      "id": "chimp22_archer",
+      "path": "assets/proprietary/gfx/chimp22_archer.tgx"
+    },
+    {
+      "id": "chimp23_xbowman",
+      "path": "assets/proprietary/gfx/chimp23_xbowman.tgx"
+    },
+    {
+      "id": "chimp24_spearman",
+      "path": "assets/proprietary/gfx/chimp24_spearman.tgx"
+    },
+    {
+      "id": "chimp25_pikeman",
+      "path": "assets/proprietary/gfx/chimp25_pikeman.tgx"
+    },
+    {
+      "id": "chimp26_maceman",
+      "path": "assets/proprietary/gfx/chimp26_maceman.tgx"
+    },
+    {
+      "id": "chimp27_swordsman",
+      "path": "assets/proprietary/gfx/chimp27_swordsman.tgx"
+    },
+    {
+      "id": "chimp28_knight",
+      "path": "assets/proprietary/gfx/chimp28_knight.tgx"
+    },
+    {
+      "id": "chimp29_ladderman",
+      "path": "assets/proprietary/gfx/chimp29_ladderman.tgx"
+    },
+    {
+      "id": "chimp30_engineer",
+      "path": "assets/proprietary/gfx/chimp30_engineer.tgx"
+    },
+    {
+      "id": "chimp37_monk",
+      "path": "assets/proprietary/gfx/chimp37_monk.tgx"
+    },
+    {
+      "id": "chimp39_catapult",
+      "path": "assets/proprietary/gfx/chimp39_catapult.tgx"
+    },
+    {
+      "id": "chimp40_trebuchet",
+      "path": "assets/proprietary/gfx/chimp40_trebuchet.tgx"
+    },
+    {
+      "id": "chimp41_mangonel",
+      "path": "assets/proprietary/gfx/chimp41_mangonel.tgx"
+    },
+    {
+      "id": "chimp55_lord",
+      "path": "assets/proprietary/gfx/chimp55_lord.tgx"
+    },
+    {
+      "id": "chimp58_siege_tower",
+      "path": "assets/proprietary/gfx/chimp58_siege_tower.tgx"
+    },
+    {
+      "id": "chimp59_battering_ram",
+      "path": "assets/proprietary/gfx/chimp59_battering_ram.tgx"
+    },
+    {
+      "id": "chimp60_portable_shield",
+      "path": "assets/proprietary/gfx/chimp60_portable_shield.tgx"
+    },
+    {
+      "id": "chimp61_ballista",
+      "path": "assets/proprietary/gfx/chimp61_ballista.tgx"
+    },
+    {
+      "id": "chimp70_arabian_bow",
+      "path": "assets/proprietary/gfx/chimp70_arabian_bow.tgx"
+    },
+    {
+      "id": "chimp71_slave",
+      "path": "assets/proprietary/gfx/chimp71_slave.tgx"
+    },
+    {
+      "id": "chimp72_slinger",
+      "path": "assets/proprietary/gfx/chimp72_slinger.tgx"
+    },
+    {
+      "id": "chimp73_assassin",
+      "path": "assets/proprietary/gfx/chimp73_assassin.tgx"
+    },
+    {
+      "id": "chimp74_horse_archer",
+      "path": "assets/proprietary/gfx/chimp74_horse_archer.tgx"
+    },
+    {
+      "id": "chimp75_Arabian_Swordman",
+      "path": "assets/proprietary/gfx/chimp75_Arabian_Swordman.tgx"
+    },
+    {
+      "id": "chimp75_arabian_swordsman",
+      "path": "assets/proprietary/gfx/chimp75_arabian_swordsman.tgx"
+    },
+    {
+      "id": "chimp76_fire_thrower",
+      "path": "assets/proprietary/gfx/chimp76_fire_thrower.tgx"
+    },
+    {
+      "id": "chimp77_fire_ballista",
+      "path": "assets/proprietary/gfx/chimp77_fire_ballista.tgx"
+    },
+    {
+      "id": "chopping_block_sketch",
+      "path": "assets/proprietary/gfx/chopping_block_sketch.tgx"
+    },
+    {
+      "id": "church_sketch",
+      "path": "assets/proprietary/gfx/church_sketch.tgx"
+    },
+    {
+      "id": "churchs",
+      "path": "assets/proprietary/gfx/churchs.tgx"
+    },
+    {
+      "id": "concept01_popularity",
+      "path": "assets/proprietary/gfx/concept01_popularity.tgx"
+    },
+    {
+      "id": "concept02_crowding",
+      "path": "assets/proprietary/gfx/concept02_crowding.tgx"
+    },
+    {
+      "id": "concept03_fear_factor",
+      "path": "assets/proprietary/gfx/concept03_fear_factor.tgx"
+    },
+    {
+      "id": "concept04_food",
+      "path": "assets/proprietary/gfx/concept04_food.tgx"
+    },
+    {
+      "id": "concept05_religion",
+      "path": "assets/proprietary/gfx/concept05_religion.tgx"
+    },
+    {
+      "id": "concept06_tax",
+      "path": "assets/proprietary/gfx/concept06_tax.tgx"
+    },
+    {
+      "id": "concept07_travelling_fairs",
+      "path": "assets/proprietary/gfx/concept07_travelling_fairs.tgx"
+    },
+    {
+      "id": "concept08_working_inns",
+      "path": "assets/proprietary/gfx/concept08_working_inns.tgx"
+    },
+    {
+      "id": "contents01_contents",
+      "path": "assets/proprietary/gfx/contents01_contents.tgx"
+    },
+    {
+      "id": "contents02_castle_buildings",
+      "path": "assets/proprietary/gfx/contents02_castle_buildings.tgx"
+    },
+    {
+      "id": "contents03_farm_buildings",
+      "path": "assets/proprietary/gfx/contents03_farm_buildings.tgx"
+    },
+    {
+      "id": "contents04_food_proc_buildings",
+      "path": "assets/proprietary/gfx/contents04_food_proc_buildings.tgx"
+    },
+    {
+      "id": "contents05_industry_buildings",
+      "path": "assets/proprietary/gfx/contents05_industry_buildings.tgx"
+    },
+    {
+      "id": "contents06_key_concepts",
+      "path": "assets/proprietary/gfx/contents06_key_concepts.tgx"
+    },
+    {
+      "id": "contents07_town_buildings",
+      "path": "assets/proprietary/gfx/contents07_town_buildings.tgx"
+    },
+    {
+      "id": "contents08_military_units",
+      "path": "assets/proprietary/gfx/contents08_military_units.tgx"
+    },
+    {
+      "id": "contents09_weapon_buildings",
+      "path": "assets/proprietary/gfx/contents09_weapon_buildings.tgx"
+    },
+    {
+      "id": "contents10_siege_engines",
+      "path": "assets/proprietary/gfx/contents10_siege_engines.tgx"
+    },
+    {
+      "id": "corpyright",
+      "path": "assets/proprietary/gfx/corpyright.tgx"
+    },
+    {
+      "id": "credits",
+      "path": "assets/proprietary/gfx/credits.tgx"
+    },
+    {
+      "id": "credits_1",
+      "path": "assets/proprietary/gfx/credits_1.tgx"
+    },
+    {
+      "id": "credits_2",
+      "path": "assets/proprietary/gfx/credits_2.tgx"
+    },
+    {
+      "id": "credits_3",
+      "path": "assets/proprietary/gfx/credits_3.tgx"
+    },
+    {
+      "id": "credits_4",
+      "path": "assets/proprietary/gfx/credits_4.tgx"
+    },
+    {
+      "id": "crossbowman_sketch",
+      "path": "assets/proprietary/gfx/crossbowman_sketch.tgx"
+    },
+    {
+      "id": "dairy_sketch",
+      "path": "assets/proprietary/gfx/dairy_sketch.tgx"
+    },
+    {
+      "id": "dancing_bear_sketch",
+      "path": "assets/proprietary/gfx/dancing_bear_sketch.tgx"
+    },
+    {
+      "id": "demo_assassin_last_frame",
+      "path": "assets/proprietary/gfx/demo_assassin_last_frame.tgx"
+    },
+    {
+      "id": "demo_big_richard",
+      "path": "assets/proprietary/gfx/demo_big_richard.tgx"
+    },
+    {
+      "id": "demo_big_saladin",
+      "path": "assets/proprietary/gfx/demo_big_saladin.tgx"
+    },
+    {
+      "id": "demo_saladin",
+      "path": "assets/proprietary/gfx/demo_saladin.tgx"
+    },
+    {
+      "id": "digging_moats_help",
+      "path": "assets/proprietary/gfx/digging_moats_help.tgx"
+    },
+    {
+      "id": "digging_tunnels_help",
+      "path": "assets/proprietary/gfx/digging_tunnels_help.tgx"
+    },
+    {
+      "id": "dog_cage_sketch",
+      "path": "assets/proprietary/gfx/dog_cage_sketch.tgx"
+    },
+    {
+      "id": "drunk_sketch",
+      "path": "assets/proprietary/gfx/drunk_sketch.tgx"
+    },
+    {
+      "id": "ducking_stool_sketch",
+      "path": "assets/proprietary/gfx/ducking_stool_sketch.tgx"
+    },
+    {
+      "id": "dungeon_sketch",
+      "path": "assets/proprietary/gfx/dungeon_sketch.tgx"
+    },
+    {
+      "id": "edge1024l",
+      "path": "assets/proprietary/gfx/edge1024l.tgx"
+    },
+    {
+      "id": "edge1024r",
+      "path": "assets/proprietary/gfx/edge1024r.tgx"
+    },
+    {
+      "id": "edge1280l",
+      "path": "assets/proprietary/gfx/edge1280l.tgx"
+    },
+    {
+      "id": "edge1280r",
+      "path": "assets/proprietary/gfx/edge1280r.tgx"
+    },
+    {
+      "id": "edge1360l",
+      "path": "assets/proprietary/gfx/edge1360l.tgx"
+    },
+    {
+      "id": "edge1360r",
+      "path": "assets/proprietary/gfx/edge1360r.tgx"
+    },
+    {
+      "id": "edge1366l",
+      "path": "assets/proprietary/gfx/edge1366l.tgx"
+    },
+    {
+      "id": "edge1366r",
+      "path": "assets/proprietary/gfx/edge1366r.tgx"
+    },
+    {
+      "id": "edge1440l",
+      "path": "assets/proprietary/gfx/edge1440l.tgx"
+    },
+    {
+      "id": "edge1440r",
+      "path": "assets/proprietary/gfx/edge1440r.tgx"
+    },
+    {
+      "id": "edge1600l",
+      "path": "assets/proprietary/gfx/edge1600l.tgx"
+    },
+    {
+      "id": "edge1600r",
+      "path": "assets/proprietary/gfx/edge1600r.tgx"
+    },
+    {
+      "id": "edge1680l",
+      "path": "assets/proprietary/gfx/edge1680l.tgx"
+    },
+    {
+      "id": "edge1680r",
+      "path": "assets/proprietary/gfx/edge1680r.tgx"
+    },
+    {
+      "id": "edge1920l",
+      "path": "assets/proprietary/gfx/edge1920l.tgx"
+    },
+    {
+      "id": "edge1920r",
+      "path": "assets/proprietary/gfx/edge1920r.tgx"
+    },
+    {
+      "id": "edge2560l",
+      "path": "assets/proprietary/gfx/edge2560l.tgx"
+    },
+    {
+      "id": "edge2560r",
+      "path": "assets/proprietary/gfx/edge2560r.tgx"
+    },
+    {
+      "id": "edge_military_1024l",
+      "path": "assets/proprietary/gfx/edge_military_1024l.tgx"
+    },
+    {
+      "id": "edge_military_1024r",
+      "path": "assets/proprietary/gfx/edge_military_1024r.tgx"
+    },
+    {
+      "id": "edge_military_1280l",
+      "path": "assets/proprietary/gfx/edge_military_1280l.tgx"
+    },
+    {
+      "id": "edge_military_1280r",
+      "path": "assets/proprietary/gfx/edge_military_1280r.tgx"
+    },
+    {
+      "id": "edge_military_1360l",
+      "path": "assets/proprietary/gfx/edge_military_1360l.tgx"
+    },
+    {
+      "id": "edge_military_1360r",
+      "path": "assets/proprietary/gfx/edge_military_1360r.tgx"
+    },
+    {
+      "id": "edge_military_1366l",
+      "path": "assets/proprietary/gfx/edge_military_1366l.tgx"
+    },
+    {
+      "id": "edge_military_1366r",
+      "path": "assets/proprietary/gfx/edge_military_1366r.tgx"
+    },
+    {
+      "id": "edge_military_1440l",
+      "path": "assets/proprietary/gfx/edge_military_1440l.tgx"
+    },
+    {
+      "id": "edge_military_1440r",
+      "path": "assets/proprietary/gfx/edge_military_1440r.tgx"
+    },
+    {
+      "id": "edge_military_1600l",
+      "path": "assets/proprietary/gfx/edge_military_1600l.tgx"
+    },
+    {
+      "id": "edge_military_1600r",
+      "path": "assets/proprietary/gfx/edge_military_1600r.tgx"
+    },
+    {
+      "id": "edge_military_1680l",
+      "path": "assets/proprietary/gfx/edge_military_1680l.tgx"
+    },
+    {
+      "id": "edge_military_1680r",
+      "path": "assets/proprietary/gfx/edge_military_1680r.tgx"
+    },
+    {
+      "id": "edge_military_1920l",
+      "path": "assets/proprietary/gfx/edge_military_1920l.tgx"
+    },
+    {
+      "id": "edge_military_1920r",
+      "path": "assets/proprietary/gfx/edge_military_1920r.tgx"
+    },
+    {
+      "id": "edge_military_2560l",
+      "path": "assets/proprietary/gfx/edge_military_2560l.tgx"
+    },
+    {
+      "id": "edge_military_2560r",
+      "path": "assets/proprietary/gfx/edge_military_2560r.tgx"
+    },
+    {
+      "id": "endframe1",
+      "path": "assets/proprietary/gfx/endframe1.tgx"
+    },
+    {
+      "id": "endframe2",
+      "path": "assets/proprietary/gfx/endframe2.tgx"
+    },
+    {
+      "id": "endframe3",
+      "path": "assets/proprietary/gfx/endframe3.tgx"
+    },
+    {
+      "id": "endframe4",
+      "path": "assets/proprietary/gfx/endframe4.tgx"
+    },
+    {
+      "id": "endframe5",
+      "path": "assets/proprietary/gfx/endframe5.tgx"
+    },
+    {
+      "id": "endframe6",
+      "path": "assets/proprietary/gfx/endframe6.tgx"
+    },
+    {
+      "id": "endframe7",
+      "path": "assets/proprietary/gfx/endframe7.tgx"
+    },
+    {
+      "id": "endframe8",
+      "path": "assets/proprietary/gfx/endframe8.tgx"
+    },
+    {
+      "id": "farmer_sketch",
+      "path": "assets/proprietary/gfx/farmer_sketch.tgx"
+    },
+    {
+      "id": "fearfactor_sketch",
+      "path": "assets/proprietary/gfx/fearfactor_sketch.tgx"
+    },
+    {
+      "id": "fearfneg",
+      "path": "assets/proprietary/gfx/fearfneg.tgx"
+    },
+    {
+      "id": "fearfpos",
+      "path": "assets/proprietary/gfx/fearfpos.tgx"
+    },
+    {
+      "id": "filling_moats_help",
+      "path": "assets/proprietary/gfx/filling_moats_help.tgx"
+    },
+    {
+      "id": "firefly-small",
+      "path": "assets/proprietary/gfx/firefly-small.tgx"
+    },
+    {
+      "id": "firefly_logo",
+      "path": "assets/proprietary/gfx/firefly_logo.tgx"
+    },
+    {
+      "id": "firewatch_sketch",
+      "path": "assets/proprietary/gfx/firewatch_sketch.tgx"
+    },
+    {
+      "id": "fletcher_building_sketch",
+      "path": "assets/proprietary/gfx/fletcher_building_sketch.tgx"
+    },
+    {
+      "id": "fletcher_sketch",
+      "path": "assets/proprietary/gfx/fletcher_sketch.tgx"
+    },
+    {
+      "id": "food_sketch",
+      "path": "assets/proprietary/gfx/food_sketch.tgx"
+    },
+    {
+      "id": "fred_natural0108",
+      "path": "assets/proprietary/gfx/fred_natural0108.tgx"
+    },
+    {
+      "id": "front_firefly_logo",
+      "path": "assets/proprietary/gfx/front_firefly_logo.tgx"
+    },
+    {
+      "id": "frontend_builder",
+      "path": "assets/proprietary/gfx/frontend_builder.tgx"
+    },
+    {
+      "id": "frontend_builder2",
+      "path": "assets/proprietary/gfx/frontend_builder2.tgx"
+    },
+    {
+      "id": "frontend_combat",
+      "path": "assets/proprietary/gfx/frontend_combat.tgx"
+    },
+    {
+      "id": "frontend_combat2",
+      "path": "assets/proprietary/gfx/frontend_combat2.tgx"
+    },
+    {
+      "id": "frontend_combat3",
+      "path": "assets/proprietary/gfx/frontend_combat3.tgx"
+    },
+    {
+      "id": "frontend_economics2",
+      "path": "assets/proprietary/gfx/frontend_economics2.tgx"
     },
     {
       "id": "frontend_loading",
       "path": "assets/proprietary/gfx/frontend_loading.tgx"
     },
     {
+      "id": "frontend_loading_ex",
+      "path": "assets/proprietary/gfx/frontend_loading_ex.tgx"
+    },
+    {
       "id": "frontend_main",
       "path": "assets/proprietary/gfx/frontend_main.tgx"
+    },
+    {
+      "id": "frontend_main2",
+      "path": "assets/proprietary/gfx/frontend_main2.tgx"
+    },
+    {
+      "id": "frontend_main_extreme",
+      "path": "assets/proprietary/gfx/frontend_main_extreme.tgx"
+    },
+    {
+      "id": "fruit_sketch",
+      "path": "assets/proprietary/gfx/fruit_sketch.tgx"
+    },
+    {
+      "id": "gallows_sketch",
+      "path": "assets/proprietary/gfx/gallows_sketch.tgx"
+    },
+    {
+      "id": "gardens_sketch",
+      "path": "assets/proprietary/gfx/gardens_sketch.tgx"
+    },
+    {
+      "id": "ghost_sketch",
+      "path": "assets/proprietary/gfx/ghost_sketch.tgx"
+    },
+    {
+      "id": "gibbet_sketch",
+      "path": "assets/proprietary/gfx/gibbet_sketch.tgx"
+    },
+    {
+      "id": "godgames_logo",
+      "path": "assets/proprietary/gfx/godgames_logo.tgx"
+    },
+    {
+      "id": "hand_lft",
+      "path": "assets/proprietary/gfx/hand_lft.tgx"
+    },
+    {
+      "id": "hand_lft_ro",
+      "path": "assets/proprietary/gfx/hand_lft_ro.tgx"
+    },
+    {
+      "id": "hand_rt",
+      "path": "assets/proprietary/gfx/hand_rt.tgx"
+    },
+    {
+      "id": "hand_rt_ro",
+      "path": "assets/proprietary/gfx/hand_rt_ro.tgx"
+    },
+    {
+      "id": "heads_on_spikes_sketch",
+      "path": "assets/proprietary/gfx/heads_on_spikes_sketch.tgx"
+    },
+    {
+      "id": "healer_sketch",
+      "path": "assets/proprietary/gfx/healer_sketch.tgx"
+    },
+    {
+      "id": "healers_sketch",
+      "path": "assets/proprietary/gfx/healers_sketch.tgx"
+    },
+    {
+      "id": "hop_sketch",
+      "path": "assets/proprietary/gfx/hop_sketch.tgx"
+    },
+    {
+      "id": "house_sketch",
+      "path": "assets/proprietary/gfx/house_sketch.tgx"
+    },
+    {
+      "id": "hunter_hut_sketch",
+      "path": "assets/proprietary/gfx/hunter_hut_sketch.tgx"
+    },
+    {
+      "id": "hunter_sketch",
+      "path": "assets/proprietary/gfx/hunter_sketch.tgx"
+    },
+    {
+      "id": "inn_sketch",
+      "path": "assets/proprietary/gfx/inn_sketch.tgx"
+    },
+    {
+      "id": "innkeeper_sketch",
+      "path": "assets/proprietary/gfx/innkeeper_sketch.tgx"
+    },
+    {
+      "id": "interface_edge1280r",
+      "path": "assets/proprietary/gfx/interface_edge1280r.tgx"
+    },
+    {
+      "id": "iron_miner_sketch",
+      "path": "assets/proprietary/gfx/iron_miner_sketch.tgx"
+    },
+    {
+      "id": "iron_sketch",
+      "path": "assets/proprietary/gfx/iron_sketch.tgx"
+    },
+    {
+      "id": "jester",
+      "path": "assets/proprietary/gfx/jester.tgx"
+    },
+    {
+      "id": "jester_sketch",
+      "path": "assets/proprietary/gfx/jester_sketch.tgx"
+    },
+    {
+      "id": "jesterlast",
+      "path": "assets/proprietary/gfx/jesterlast.tgx"
+    },
+    {
+      "id": "keep_sketch",
+      "path": "assets/proprietary/gfx/keep_sketch.tgx"
+    },
+    {
+      "id": "killing_pits_sketch",
+      "path": "assets/proprietary/gfx/killing_pits_sketch.tgx"
+    },
+    {
+      "id": "king",
+      "path": "assets/proprietary/gfx/king.tgx"
+    },
+    {
+      "id": "logo1",
+      "path": "assets/proprietary/gfx/logo1.tgx"
+    },
+    {
+      "id": "logo2",
+      "path": "assets/proprietary/gfx/logo2.tgx"
+    },
+    {
+      "id": "logo2_old",
+      "path": "assets/proprietary/gfx/logo2_old.tgx"
+    },
+    {
+      "id": "logo_280x100",
+      "path": "assets/proprietary/gfx/logo_280x100.tgx"
+    },
+    {
+      "id": "logo_bink",
+      "path": "assets/proprietary/gfx/logo_bink.tgx"
+    },
+    {
+      "id": "logo_bink_glow",
+      "path": "assets/proprietary/gfx/logo_bink_glow.tgx"
+    },
+    {
+      "id": "logo_bradygames",
+      "path": "assets/proprietary/gfx/logo_bradygames.tgx"
+    },
+    {
+      "id": "logo_bradygames_glow",
+      "path": "assets/proprietary/gfx/logo_bradygames_glow.tgx"
+    },
+    {
+      "id": "logo_buy_it",
+      "path": "assets/proprietary/gfx/logo_buy_it.tgx"
+    },
+    {
+      "id": "logo_buy_it_glow",
+      "path": "assets/proprietary/gfx/logo_buy_it_glow.tgx"
+    },
+    {
+      "id": "logo_crusader",
+      "path": "assets/proprietary/gfx/logo_crusader.tgx"
+    },
+    {
+      "id": "logo_crusader_glow",
+      "path": "assets/proprietary/gfx/logo_crusader_glow.tgx"
+    },
+    {
+      "id": "logo_firefly",
+      "path": "assets/proprietary/gfx/logo_firefly.tgx"
+    },
+    {
+      "id": "logo_firefly_glow",
+      "path": "assets/proprietary/gfx/logo_firefly_glow.tgx"
+    },
+    {
+      "id": "logo_gathering",
+      "path": "assets/proprietary/gfx/logo_gathering.tgx"
+    },
+    {
+      "id": "logo_gathering_glow",
+      "path": "assets/proprietary/gfx/logo_gathering_glow.tgx"
+    },
+    {
+      "id": "logo_godgames",
+      "path": "assets/proprietary/gfx/logo_godgames.tgx"
+    },
+    {
+      "id": "logo_miles",
+      "path": "assets/proprietary/gfx/logo_miles.tgx"
+    },
+    {
+      "id": "logo_miles_glow",
+      "path": "assets/proprietary/gfx/logo_miles_glow.tgx"
+    },
+    {
+      "id": "logo_ratings",
+      "path": "assets/proprietary/gfx/logo_ratings.tgx"
+    },
+    {
+      "id": "logo_teen",
+      "path": "assets/proprietary/gfx/logo_teen.tgx"
+    },
+    {
+      "id": "logo_teen_glow",
+      "path": "assets/proprietary/gfx/logo_teen_glow.tgx"
+    },
+    {
+      "id": "lose_screen_arab",
+      "path": "assets/proprietary/gfx/lose_screen_arab.tgx"
+    },
+    {
+      "id": "lose_screen_crusader",
+      "path": "assets/proprietary/gfx/lose_screen_crusader.tgx"
+    },
+    {
+      "id": "m10map",
+      "path": "assets/proprietary/gfx/m10map.tgx"
+    },
+    {
+      "id": "m11map",
+      "path": "assets/proprietary/gfx/m11map.tgx"
+    },
+    {
+      "id": "m12map",
+      "path": "assets/proprietary/gfx/m12map.tgx"
+    },
+    {
+      "id": "m13map",
+      "path": "assets/proprietary/gfx/m13map.tgx"
+    },
+    {
+      "id": "m14map",
+      "path": "assets/proprietary/gfx/m14map.tgx"
+    },
+    {
+      "id": "m15map",
+      "path": "assets/proprietary/gfx/m15map.tgx"
+    },
+    {
+      "id": "m16map",
+      "path": "assets/proprietary/gfx/m16map.tgx"
+    },
+    {
+      "id": "m17map",
+      "path": "assets/proprietary/gfx/m17map.tgx"
+    },
+    {
+      "id": "m18map",
+      "path": "assets/proprietary/gfx/m18map.tgx"
+    },
+    {
+      "id": "m19map",
+      "path": "assets/proprietary/gfx/m19map.tgx"
+    },
+    {
+      "id": "m1map",
+      "path": "assets/proprietary/gfx/m1map.tgx"
+    },
+    {
+      "id": "m1pic",
+      "path": "assets/proprietary/gfx/m1pic.tgx"
+    },
+    {
+      "id": "m1picb",
+      "path": "assets/proprietary/gfx/m1picb.tgx"
+    },
+    {
+      "id": "m20map",
+      "path": "assets/proprietary/gfx/m20map.tgx"
+    },
+    {
+      "id": "m2map",
+      "path": "assets/proprietary/gfx/m2map.tgx"
+    },
+    {
+      "id": "m2pic",
+      "path": "assets/proprietary/gfx/m2pic.tgx"
+    },
+    {
+      "id": "m3map",
+      "path": "assets/proprietary/gfx/m3map.tgx"
+    },
+    {
+      "id": "m3pic",
+      "path": "assets/proprietary/gfx/m3pic.tgx"
+    },
+    {
+      "id": "m4map",
+      "path": "assets/proprietary/gfx/m4map.tgx"
+    },
+    {
+      "id": "m4pic",
+      "path": "assets/proprietary/gfx/m4pic.tgx"
+    },
+    {
+      "id": "m5map",
+      "path": "assets/proprietary/gfx/m5map.tgx"
+    },
+    {
+      "id": "m6map",
+      "path": "assets/proprietary/gfx/m6map.tgx"
+    },
+    {
+      "id": "m7map",
+      "path": "assets/proprietary/gfx/m7map.tgx"
+    },
+    {
+      "id": "m8map",
+      "path": "assets/proprietary/gfx/m8map.tgx"
+    },
+    {
+      "id": "m9map",
+      "path": "assets/proprietary/gfx/m9map.tgx"
+    },
+    {
+      "id": "mapedge1024l",
+      "path": "assets/proprietary/gfx/mapedge1024l.tgx"
+    },
+    {
+      "id": "mapedge1024r",
+      "path": "assets/proprietary/gfx/mapedge1024r.tgx"
+    },
+    {
+      "id": "mapedge1280l",
+      "path": "assets/proprietary/gfx/mapedge1280l.tgx"
+    },
+    {
+      "id": "mapedge1280r",
+      "path": "assets/proprietary/gfx/mapedge1280r.tgx"
+    },
+    {
+      "id": "maypole_sketch",
+      "path": "assets/proprietary/gfx/maypole_sketch.tgx"
+    },
+    {
+      "id": "miles",
+      "path": "assets/proprietary/gfx/miles.tgx"
+    },
+    {
+      "id": "mill_sketch",
+      "path": "assets/proprietary/gfx/mill_sketch.tgx"
+    },
+    {
+      "id": "mother_sketch",
+      "path": "assets/proprietary/gfx/mother_sketch.tgx"
+    },
+    {
+      "id": "movie_frame",
+      "path": "assets/proprietary/gfx/movie_frame.tgx"
+    },
+    {
+      "id": "moving_units",
+      "path": "assets/proprietary/gfx/moving_units.tgx"
+    },
+    {
+      "id": "null_chimp_sketch",
+      "path": "assets/proprietary/gfx/null_chimp_sketch.tgx"
+    },
+    {
+      "id": "null_sketch",
+      "path": "assets/proprietary/gfx/null_sketch.tgx"
+    },
+    {
+      "id": "oil_smelter_sketch",
+      "path": "assets/proprietary/gfx/oil_smelter_sketch.tgx"
+    },
+    {
+      "id": "open_book",
+      "path": "assets/proprietary/gfx/open_book.tgx"
+    },
+    {
+      "id": "opp1",
+      "path": "assets/proprietary/gfx/opp1.tgx"
+    },
+    {
+      "id": "opp2",
+      "path": "assets/proprietary/gfx/opp2.tgx"
+    },
+    {
+      "id": "opp3",
+      "path": "assets/proprietary/gfx/opp3.tgx"
+    },
+    {
+      "id": "opp4",
+      "path": "assets/proprietary/gfx/opp4.tgx"
+    },
+    {
+      "id": "opp5",
+      "path": "assets/proprietary/gfx/opp5.tgx"
+    },
+    {
+      "id": "opp6",
+      "path": "assets/proprietary/gfx/opp6.tgx"
+    },
+    {
+      "id": "opp7",
+      "path": "assets/proprietary/gfx/opp7.tgx"
+    },
+    {
+      "id": "ox_tether_sketch",
+      "path": "assets/proprietary/gfx/ox_tether_sketch.tgx"
+    },
+    {
+      "id": "p1",
+      "path": "assets/proprietary/gfx/p1.tgx"
+    },
+    {
+      "id": "p2",
+      "path": "assets/proprietary/gfx/p2.tgx"
+    },
+    {
+      "id": "p3",
+      "path": "assets/proprietary/gfx/p3.tgx"
+    },
+    {
+      "id": "p4",
+      "path": "assets/proprietary/gfx/p4.tgx"
+    },
+    {
+      "id": "page1",
+      "path": "assets/proprietary/gfx/page1.tgx"
+    },
+    {
+      "id": "pbutt",
+      "path": "assets/proprietary/gfx/pbutt.tgx"
+    },
+    {
+      "id": "pbutt2",
+      "path": "assets/proprietary/gfx/pbutt2.tgx"
+    },
+    {
+      "id": "pc0",
+      "path": "assets/proprietary/gfx/pc0.tgx"
+    },
+    {
+      "id": "pc1",
+      "path": "assets/proprietary/gfx/pc1.tgx"
+    },
+    {
+      "id": "pc2",
+      "path": "assets/proprietary/gfx/pc2.tgx"
+    },
+    {
+      "id": "pc3",
+      "path": "assets/proprietary/gfx/pc3.tgx"
+    },
+    {
+      "id": "pc4",
+      "path": "assets/proprietary/gfx/pc4.tgx"
+    },
+    {
+      "id": "pc5",
+      "path": "assets/proprietary/gfx/pc5.tgx"
+    },
+    {
+      "id": "pc6",
+      "path": "assets/proprietary/gfx/pc6.tgx"
+    },
+    {
+      "id": "pc7",
+      "path": "assets/proprietary/gfx/pc7.tgx"
+    },
+    {
+      "id": "philip_taunt0150",
+      "path": "assets/proprietary/gfx/philip_taunt0150.tgx"
+    },
+    {
+      "id": "pick_opponent_large",
+      "path": "assets/proprietary/gfx/pick_opponent_large.tgx"
+    },
+    {
+      "id": "pick_opponent_normal",
+      "path": "assets/proprietary/gfx/pick_opponent_normal.tgx"
+    },
+    {
+      "id": "pig",
+      "path": "assets/proprietary/gfx/pig.tgx"
+    },
+    {
+      "id": "pitch_ditches",
+      "path": "assets/proprietary/gfx/pitch_ditches.tgx"
+    },
+    {
+      "id": "pitch_sketch",
+      "path": "assets/proprietary/gfx/pitch_sketch.tgx"
+    },
+    {
+      "id": "pitchworker_sketch",
+      "path": "assets/proprietary/gfx/pitchworker_sketch.tgx"
+    },
+    {
+      "id": "placement_guide",
+      "path": "assets/proprietary/gfx/placement_guide.tgx"
+    },
+    {
+      "id": "pole_sketch",
+      "path": "assets/proprietary/gfx/pole_sketch.tgx"
+    },
+    {
+      "id": "poleturner_sketch",
+      "path": "assets/proprietary/gfx/poleturner_sketch.tgx"
+    },
+    {
+      "id": "ponds_sketch",
+      "path": "assets/proprietary/gfx/ponds_sketch.tgx"
+    },
+    {
+      "id": "popgraph",
+      "path": "assets/proprietary/gfx/popgraph.tgx"
+    },
+    {
+      "id": "popularity_sketch",
+      "path": "assets/proprietary/gfx/popularity_sketch.tgx"
+    },
+    {
+      "id": "population_sketch",
+      "path": "assets/proprietary/gfx/population_sketch.tgx"
+    },
+    {
+      "id": "priest_sketch",
+      "path": "assets/proprietary/gfx/priest_sketch.tgx"
+    },
+    {
+      "id": "quarry_sketch",
+      "path": "assets/proprietary/gfx/quarry_sketch.tgx"
+    },
+    {
+      "id": "rat",
+      "path": "assets/proprietary/gfx/rat.tgx"
+    },
+    {
+      "id": "religion_sketch",
+      "path": "assets/proprietary/gfx/religion_sketch.tgx"
+    },
+    {
+      "id": "richard_taunt_end",
+      "path": "assets/proprietary/gfx/richard_taunt_end.tgx"
+    },
+    {
+      "id": "sand",
+      "path": "assets/proprietary/gfx/sand.tgx"
+    },
+    {
+      "id": "selecting_units",
+      "path": "assets/proprietary/gfx/selecting_units.tgx"
+    },
+    {
+      "id": "shield1",
+      "path": "assets/proprietary/gfx/shield1.tgx"
+    },
+    {
+      "id": "shield2",
+      "path": "assets/proprietary/gfx/shield2.tgx"
+    },
+    {
+      "id": "siege_engineer_guild_sketch",
+      "path": "assets/proprietary/gfx/siege_engineer_guild_sketch.tgx"
+    },
+    {
+      "id": "siege_engineer_sketch",
+      "path": "assets/proprietary/gfx/siege_engineer_sketch.tgx"
+    },
+    {
+      "id": "skirmish_background",
+      "path": "assets/proprietary/gfx/skirmish_background.tgx"
+    },
+    {
+      "id": "skirmish_trail",
+      "path": "assets/proprietary/gfx/skirmish_trail.tgx"
+    },
+    {
+      "id": "skirmish_trail2",
+      "path": "assets/proprietary/gfx/skirmish_trail2.tgx"
+    },
+    {
+      "id": "skirmish_trail_vignette",
+      "path": "assets/proprietary/gfx/skirmish_trail_vignette.tgx"
+    },
+    {
+      "id": "sktrail_win",
+      "path": "assets/proprietary/gfx/sktrail_win.tgx"
+    },
+    {
+      "id": "snake",
+      "path": "assets/proprietary/gfx/snake.tgx"
+    },
+    {
+      "id": "st03-woodcutters",
+      "path": "assets/proprietary/gfx/st03-woodcutters.tgx"
+    },
+    {
+      "id": "st105_bear_cave",
+      "path": "assets/proprietary/gfx/st105_bear_cave.tgx"
+    },
+    {
+      "id": "st47_gate_wood",
+      "path": "assets/proprietary/gfx/st47_gate_wood.tgx"
+    },
+    {
+      "id": "st52_signpost",
+      "path": "assets/proprietary/gfx/st52_signpost.tgx"
+    },
+    {
+      "id": "st68_pitch_ditch",
+      "path": "assets/proprietary/gfx/st68_pitch_ditch.tgx"
+    },
+    {
+      "id": "st70_water_pot",
+      "path": "assets/proprietary/gfx/st70_water_pot.tgx"
+    },
+    {
+      "id": "st99_dog_cage",
+      "path": "assets/proprietary/gfx/st99_dog_cage.tgx"
+    },
+    {
+      "id": "stables_sketch",
+      "path": "assets/proprietary/gfx/stables_sketch.tgx"
+    },
+    {
+      "id": "stairs_help",
+      "path": "assets/proprietary/gfx/stairs_help.tgx"
+    },
+    {
+      "id": "stake_sketch",
+      "path": "assets/proprietary/gfx/stake_sketch.tgx"
+    },
+    {
+      "id": "star",
+      "path": "assets/proprietary/gfx/star.tgx"
+    },
+    {
+      "id": "statue_sketch",
+      "path": "assets/proprietary/gfx/statue_sketch.tgx"
+    },
+    {
+      "id": "stockpile_sketch",
+      "path": "assets/proprietary/gfx/stockpile_sketch.tgx"
+    },
+    {
+      "id": "stocks_sketch",
+      "path": "assets/proprietary/gfx/stocks_sketch.tgx"
+    },
+    {
+      "id": "stone quarry",
+      "path": "assets/proprietary/gfx/stone quarry.tgx"
+    },
+    {
+      "id": "stonemason_sketch",
+      "path": "assets/proprietary/gfx/stonemason_sketch.tgx"
+    },
+    {
+      "id": "stretching_rack_sketch",
+      "path": "assets/proprietary/gfx/stretching_rack_sketch.tgx"
+    },
+    {
+      "id": "table",
+      "path": "assets/proprietary/gfx/table.tgx"
+    },
+    {
+      "id": "tanner_building_sketch",
+      "path": "assets/proprietary/gfx/tanner_building_sketch.tgx"
+    },
+    {
+      "id": "tanner_sketch",
+      "path": "assets/proprietary/gfx/tanner_sketch.tgx"
+    },
+    {
+      "id": "tower_sketch",
+      "path": "assets/proprietary/gfx/tower_sketch.tgx"
+    },
+    {
+      "id": "trader_sketch",
+      "path": "assets/proprietary/gfx/trader_sketch.tgx"
+    },
+    {
+      "id": "tslice1",
+      "path": "assets/proprietary/gfx/tslice1.tgx"
+    },
+    {
+      "id": "tslice1b",
+      "path": "assets/proprietary/gfx/tslice1b.tgx"
+    },
+    {
+      "id": "tslice2",
+      "path": "assets/proprietary/gfx/tslice2.tgx"
+    },
+    {
+      "id": "tslice2b",
+      "path": "assets/proprietary/gfx/tslice2b.tgx"
+    },
+    {
+      "id": "tslice3",
+      "path": "assets/proprietary/gfx/tslice3.tgx"
+    },
+    {
+      "id": "tslice3b",
+      "path": "assets/proprietary/gfx/tslice3b.tgx"
+    },
+    {
+      "id": "tslice4",
+      "path": "assets/proprietary/gfx/tslice4.tgx"
+    },
+    {
+      "id": "tslice4b",
+      "path": "assets/proprietary/gfx/tslice4b.tgx"
+    },
+    {
+      "id": "tslice5",
+      "path": "assets/proprietary/gfx/tslice5.tgx"
+    },
+    {
+      "id": "tslice5b",
+      "path": "assets/proprietary/gfx/tslice5b.tgx"
+    },
+    {
+      "id": "tslice6",
+      "path": "assets/proprietary/gfx/tslice6.tgx"
+    },
+    {
+      "id": "tslice6b",
+      "path": "assets/proprietary/gfx/tslice6b.tgx"
+    },
+    {
+      "id": "tslice7",
+      "path": "assets/proprietary/gfx/tslice7.tgx"
+    },
+    {
+      "id": "tslice7b",
+      "path": "assets/proprietary/gfx/tslice7b.tgx"
+    },
+    {
+      "id": "tslice8",
+      "path": "assets/proprietary/gfx/tslice8.tgx"
+    },
+    {
+      "id": "tslice8b",
+      "path": "assets/proprietary/gfx/tslice8b.tgx"
+    },
+    {
+      "id": "tunnelor_sketch",
+      "path": "assets/proprietary/gfx/tunnelor_sketch.tgx"
+    },
+    {
+      "id": "tunnelors_guild_sketch",
+      "path": "assets/proprietary/gfx/tunnelors_guild_sketch.tgx"
+    },
+    {
+      "id": "unit stances_aggressive",
+      "path": "assets/proprietary/gfx/unit stances_aggressive.tgx"
+    },
+    {
+      "id": "unit stances_defensive",
+      "path": "assets/proprietary/gfx/unit stances_defensive.tgx"
+    },
+    {
+      "id": "unit stances_standground",
+      "path": "assets/proprietary/gfx/unit stances_standground.tgx"
+    },
+    {
+      "id": "unit_stances_aggressive",
+      "path": "assets/proprietary/gfx/unit_stances_aggressive.tgx"
+    },
+    {
+      "id": "walls_help",
+      "path": "assets/proprietary/gfx/walls_help.tgx"
+    },
+    {
+      "id": "waterpot_sketch",
+      "path": "assets/proprietary/gfx/waterpot_sketch.tgx"
+    },
+    {
+      "id": "weapons_sketch",
+      "path": "assets/proprietary/gfx/weapons_sketch.tgx"
+    },
+    {
+      "id": "wedding",
+      "path": "assets/proprietary/gfx/wedding.tgx"
+    },
+    {
+      "id": "wedding_sketch",
+      "path": "assets/proprietary/gfx/wedding_sketch.tgx"
+    },
+    {
+      "id": "well_sketch",
+      "path": "assets/proprietary/gfx/well_sketch.tgx"
+    },
+    {
+      "id": "wheat_sketch",
+      "path": "assets/proprietary/gfx/wheat_sketch.tgx"
+    },
+    {
+      "id": "win_screen_arab",
+      "path": "assets/proprietary/gfx/win_screen_arab.tgx"
+    },
+    {
+      "id": "win_screen_crusader",
+      "path": "assets/proprietary/gfx/win_screen_crusader.tgx"
+    },
+    {
+      "id": "wolf",
+      "path": "assets/proprietary/gfx/wolf.tgx"
+    },
+    {
+      "id": "woodcutter_hut_sketch",
+      "path": "assets/proprietary/gfx/woodcutter_hut_sketch.tgx"
+    },
+    {
+      "id": "woodcutter_sketch",
+      "path": "assets/proprietary/gfx/woodcutter_sketch.tgx"
+    },
+    {
+      "id": "woolsack",
+      "path": "assets/proprietary/gfx/woolsack.tgx"
     }
   ],
   "animations": [
     {
+      "id": "Tree_Chestnut",
+      "path": "assets/proprietary/gm/Tree_Chestnut.gm1"
+    },
+    {
       "id": "anim_armourer",
       "path": "assets/proprietary/gm/anim_armourer.gm1"
+    },
+    {
+      "id": "anim_baker",
+      "path": "assets/proprietary/gm/anim_baker.gm1"
+    },
+    {
+      "id": "anim_blacksmith",
+      "path": "assets/proprietary/gm/anim_blacksmith.gm1"
+    },
+    {
+      "id": "anim_boiled_oil",
+      "path": "assets/proprietary/gm/anim_boiled_oil.gm1"
+    },
+    {
+      "id": "anim_brewer",
+      "path": "assets/proprietary/gm/anim_brewer.gm1"
+    },
+    {
+      "id": "anim_buildings2",
+      "path": "assets/proprietary/gm/anim_buildings2.gm1"
+    },
+    {
+      "id": "anim_campaign_map_flags",
+      "path": "assets/proprietary/gm/anim_campaign_map_flags.gm1"
+    },
+    {
+      "id": "anim_castle",
+      "path": "assets/proprietary/gm/anim_castle.gm1"
+    },
+    {
+      "id": "anim_chopping_block",
+      "path": "assets/proprietary/gm/anim_chopping_block.gm1"
+    },
+    {
+      "id": "anim_crusader_flag",
+      "path": "assets/proprietary/gm/anim_crusader_flag.gm1"
+    },
+    {
+      "id": "anim_dancing_bear",
+      "path": "assets/proprietary/gm/anim_dancing_bear.gm1"
+    },
+    {
+      "id": "anim_dog_cage",
+      "path": "assets/proprietary/gm/anim_dog_cage.gm1"
+    },
+    {
+      "id": "anim_drawbridge",
+      "path": "assets/proprietary/gm/anim_drawbridge.gm1"
+    },
+    {
+      "id": "anim_ducking_stool",
+      "path": "assets/proprietary/gm/anim_ducking_stool.gm1"
+    },
+    {
+      "id": "anim_dungeon",
+      "path": "assets/proprietary/gm/anim_dungeon.gm1"
+    },
+    {
+      "id": "anim_farmer",
+      "path": "assets/proprietary/gm/anim_farmer.gm1"
+    },
+    {
+      "id": "anim_flag_small",
+      "path": "assets/proprietary/gm/anim_flag_small.gm1"
+    },
+    {
+      "id": "anim_flags",
+      "path": "assets/proprietary/gm/anim_flags.gm1"
+    },
+    {
+      "id": "anim_fletcher",
+      "path": "assets/proprietary/gm/anim_fletcher.gm1"
+    },
+    {
+      "id": "anim_gallows",
+      "path": "assets/proprietary/gm/anim_gallows.gm1"
+    },
+    {
+      "id": "anim_gibbet",
+      "path": "assets/proprietary/gm/anim_gibbet.gm1"
+    },
+    {
+      "id": "anim_goods",
+      "path": "assets/proprietary/gm/anim_goods.gm1"
+    },
+    {
+      "id": "anim_heads",
+      "path": "assets/proprietary/gm/anim_heads.gm1"
+    },
+    {
+      "id": "anim_healer",
+      "path": "assets/proprietary/gm/anim_healer.gm1"
+    },
+    {
+      "id": "anim_hunter",
+      "path": "assets/proprietary/gm/anim_hunter.gm1"
+    },
+    {
+      "id": "anim_inn",
+      "path": "assets/proprietary/gm/anim_inn.gm1"
+    },
+    {
+      "id": "anim_iron_miner",
+      "path": "assets/proprietary/gm/anim_iron_miner.gm1"
+    },
+    {
+      "id": "anim_killing_pits",
+      "path": "assets/proprietary/gm/anim_killing_pits.gm1"
+    },
+    {
+      "id": "anim_market",
+      "path": "assets/proprietary/gm/anim_market.gm1"
+    },
+    {
+      "id": "anim_maypole",
+      "path": "assets/proprietary/gm/anim_maypole.gm1"
+    },
+    {
+      "id": "anim_pitch_dugout",
+      "path": "assets/proprietary/gm/anim_pitch_dugout.gm1"
+    },
+    {
+      "id": "anim_poleturner",
+      "path": "assets/proprietary/gm/anim_poleturner.gm1"
+    },
+    {
+      "id": "anim_quarry",
+      "path": "assets/proprietary/gm/anim_quarry.gm1"
+    },
+    {
+      "id": "anim_rack",
+      "path": "assets/proprietary/gm/anim_rack.gm1"
+    },
+    {
+      "id": "anim_shields",
+      "path": "assets/proprietary/gm/anim_shields.gm1"
+    },
+    {
+      "id": "anim_stables",
+      "path": "assets/proprietary/gm/anim_stables.gm1"
+    },
+    {
+      "id": "anim_stake",
+      "path": "assets/proprietary/gm/anim_stake.gm1"
+    },
+    {
+      "id": "anim_stocks",
+      "path": "assets/proprietary/gm/anim_stocks.gm1"
+    },
+    {
+      "id": "anim_tanner",
+      "path": "assets/proprietary/gm/anim_tanner.gm1"
+    },
+    {
+      "id": "anim_tunnelors_guild",
+      "path": "assets/proprietary/gm/anim_tunnelors_guild.gm1"
+    },
+    {
+      "id": "anim_tunnels",
+      "path": "assets/proprietary/gm/anim_tunnels.gm1"
+    },
+    {
+      "id": "anim_whitecaps",
+      "path": "assets/proprietary/gm/anim_whitecaps.gm1"
+    },
+    {
+      "id": "anim_windmill",
+      "path": "assets/proprietary/gm/anim_windmill.gm1"
+    },
+    {
+      "id": "anim_woodcutter",
+      "path": "assets/proprietary/gm/anim_woodcutter.gm1"
+    },
+    {
+      "id": "army_units",
+      "path": "assets/proprietary/gm/army_units.gm1"
+    },
+    {
+      "id": "assasin_rope",
+      "path": "assets/proprietary/gm/assasin_rope.gm1"
+    },
+    {
+      "id": "blast3",
+      "path": "assets/proprietary/gm/blast3.gm1"
+    },
+    {
+      "id": "body_animal_burning_big",
+      "path": "assets/proprietary/gm/body_animal_burning_big.gm1"
+    },
+    {
+      "id": "body_animal_burning_small",
+      "path": "assets/proprietary/gm/body_animal_burning_small.gm1"
+    },
+    {
+      "id": "body_arab_assasin",
+      "path": "assets/proprietary/gm/body_arab_assasin.gm1"
+    },
+    {
+      "id": "body_arab_ballista",
+      "path": "assets/proprietary/gm/body_arab_ballista.gm1"
+    },
+    {
+      "id": "body_arab_grenadier",
+      "path": "assets/proprietary/gm/body_arab_grenadier.gm1"
+    },
+    {
+      "id": "body_arab_shortbow",
+      "path": "assets/proprietary/gm/body_arab_shortbow.gm1"
+    },
+    {
+      "id": "body_arab_slave",
+      "path": "assets/proprietary/gm/body_arab_slave.gm1"
+    },
+    {
+      "id": "body_arab_slinger",
+      "path": "assets/proprietary/gm/body_arab_slinger.gm1"
+    },
+    {
+      "id": "body_arab_swordsman",
+      "path": "assets/proprietary/gm/body_arab_swordsman.gm1"
+    },
+    {
+      "id": "body_archer",
+      "path": "assets/proprietary/gm/body_archer.gm1"
+    },
+    {
+      "id": "body_armourer",
+      "path": "assets/proprietary/gm/body_armourer.gm1"
+    },
+    {
+      "id": "body_baker",
+      "path": "assets/proprietary/gm/body_baker.gm1"
+    },
+    {
+      "id": "body_ballista",
+      "path": "assets/proprietary/gm/body_ballista.gm1"
+    },
+    {
+      "id": "body_battering_ram",
+      "path": "assets/proprietary/gm/body_battering_ram.gm1"
+    },
+    {
+      "id": "body_bear",
+      "path": "assets/proprietary/gm/body_bear.gm1"
+    },
+    {
+      "id": "body_blacksmith",
+      "path": "assets/proprietary/gm/body_blacksmith.gm1"
+    },
+    {
+      "id": "body_boy",
+      "path": "assets/proprietary/gm/body_boy.gm1"
+    },
+    {
+      "id": "body_brazier",
+      "path": "assets/proprietary/gm/body_brazier.gm1"
+    },
+    {
+      "id": "body_brewer",
+      "path": "assets/proprietary/gm/body_brewer.gm1"
+    },
+    {
+      "id": "body_camel",
+      "path": "assets/proprietary/gm/body_camel.gm1"
+    },
+    {
+      "id": "body_catapult",
+      "path": "assets/proprietary/gm/body_catapult.gm1"
+    },
+    {
+      "id": "body_chicken",
+      "path": "assets/proprietary/gm/body_chicken.gm1"
+    },
+    {
+      "id": "body_chicken_brown",
+      "path": "assets/proprietary/gm/body_chicken_brown.gm1"
+    },
+    {
+      "id": "body_cow",
+      "path": "assets/proprietary/gm/body_cow.gm1"
+    },
+    {
+      "id": "body_crossbowman",
+      "path": "assets/proprietary/gm/body_crossbowman.gm1"
+    },
+    {
+      "id": "body_crow",
+      "path": "assets/proprietary/gm/body_crow.gm1"
+    },
+    {
+      "id": "body_deer",
+      "path": "assets/proprietary/gm/body_deer.gm1"
+    },
+    {
+      "id": "body_disease",
+      "path": "assets/proprietary/gm/body_disease.gm1"
+    },
+    {
+      "id": "body_dog",
+      "path": "assets/proprietary/gm/body_dog.gm1"
+    },
+    {
+      "id": "body_drunkard",
+      "path": "assets/proprietary/gm/body_drunkard.gm1"
+    },
+    {
+      "id": "body_farmer",
+      "path": "assets/proprietary/gm/body_farmer.gm1"
+    },
+    {
+      "id": "body_fighting_monk",
+      "path": "assets/proprietary/gm/body_fighting_monk.gm1"
+    },
+    {
+      "id": "body_fire",
+      "path": "assets/proprietary/gm/body_fire.gm1"
+    },
+    {
+      "id": "body_fire2",
+      "path": "assets/proprietary/gm/body_fire2.gm1"
+    },
+    {
+      "id": "body_fire_eater",
+      "path": "assets/proprietary/gm/body_fire_eater.gm1"
+    },
+    {
+      "id": "body_fireman",
+      "path": "assets/proprietary/gm/body_fireman.gm1"
+    },
+    {
+      "id": "body_fletcher",
+      "path": "assets/proprietary/gm/body_fletcher.gm1"
+    },
+    {
+      "id": "body_gate",
+      "path": "assets/proprietary/gm/body_gate.gm1"
+    },
+    {
+      "id": "body_ghost",
+      "path": "assets/proprietary/gm/body_ghost.gm1"
+    },
+    {
+      "id": "body_girl",
+      "path": "assets/proprietary/gm/body_girl.gm1"
+    },
+    {
+      "id": "body_healer",
+      "path": "assets/proprietary/gm/body_healer.gm1"
+    },
+    {
+      "id": "body_horse_archer",
+      "path": "assets/proprietary/gm/body_horse_archer.gm1"
+    },
+    {
+      "id": "body_horse_archer_top",
+      "path": "assets/proprietary/gm/body_horse_archer_top.gm1"
+    },
+    {
+      "id": "body_horse_trader",
+      "path": "assets/proprietary/gm/body_horse_trader.gm1"
+    },
+    {
+      "id": "body_hunter",
+      "path": "assets/proprietary/gm/body_hunter.gm1"
+    },
+    {
+      "id": "body_info",
+      "path": "assets/proprietary/gm/body_info.gm1"
+    },
+    {
+      "id": "body_innkeeper",
+      "path": "assets/proprietary/gm/body_innkeeper.gm1"
+    },
+    {
+      "id": "body_iron_miner",
+      "path": "assets/proprietary/gm/body_iron_miner.gm1"
+    },
+    {
+      "id": "body_jester",
+      "path": "assets/proprietary/gm/body_jester.gm1"
+    },
+    {
+      "id": "body_juggler",
+      "path": "assets/proprietary/gm/body_juggler.gm1"
+    },
+    {
+      "id": "body_knight",
+      "path": "assets/proprietary/gm/body_knight.gm1"
+    },
+    {
+      "id": "body_knight_top",
+      "path": "assets/proprietary/gm/body_knight_top.gm1"
+    },
+    {
+      "id": "body_ladder_bearer",
+      "path": "assets/proprietary/gm/body_ladder_bearer.gm1"
+    },
+    {
+      "id": "body_lady",
+      "path": "assets/proprietary/gm/body_lady.gm1"
+    },
+    {
+      "id": "body_lion",
+      "path": "assets/proprietary/gm/body_lion.gm1"
+    },
+    {
+      "id": "body_lord",
+      "path": "assets/proprietary/gm/body_lord.gm1"
+    },
+    {
+      "id": "body_maceman",
+      "path": "assets/proprietary/gm/body_maceman.gm1"
+    },
+    {
+      "id": "body_man_burning",
+      "path": "assets/proprietary/gm/body_man_burning.gm1"
+    },
+    {
+      "id": "body_mangonel",
+      "path": "assets/proprietary/gm/body_mangonel.gm1"
+    },
+    {
+      "id": "body_miller",
+      "path": "assets/proprietary/gm/body_miller.gm1"
+    },
+    {
+      "id": "body_missile",
+      "path": "assets/proprietary/gm/body_missile.gm1"
+    },
+    {
+      "id": "body_missile_2",
+      "path": "assets/proprietary/gm/body_missile_2.gm1"
+    },
+    {
+      "id": "body_missile_cow",
+      "path": "assets/proprietary/gm/body_missile_cow.gm1"
+    },
+    {
+      "id": "body_missile_fire",
+      "path": "assets/proprietary/gm/body_missile_fire.gm1"
+    },
+    {
+      "id": "body_mother",
+      "path": "assets/proprietary/gm/body_mother.gm1"
+    },
+    {
+      "id": "body_ox",
+      "path": "assets/proprietary/gm/body_ox.gm1"
+    },
+    {
+      "id": "body_peasant",
+      "path": "assets/proprietary/gm/body_peasant.gm1"
+    },
+    {
+      "id": "body_pikeman",
+      "path": "assets/proprietary/gm/body_pikeman.gm1"
+    },
+    {
+      "id": "body_pitch_worker",
+      "path": "assets/proprietary/gm/body_pitch_worker.gm1"
+    },
+    {
+      "id": "body_poleturner",
+      "path": "assets/proprietary/gm/body_poleturner.gm1"
+    },
+    {
+      "id": "body_priest",
+      "path": "assets/proprietary/gm/body_priest.gm1"
+    },
+    {
+      "id": "body_rabbit",
+      "path": "assets/proprietary/gm/body_rabbit.gm1"
+    },
+    {
+      "id": "body_saladin",
+      "path": "assets/proprietary/gm/body_saladin.gm1"
+    },
+    {
+      "id": "body_seagull",
+      "path": "assets/proprietary/gm/body_seagull.gm1"
+    },
+    {
+      "id": "body_shield",
+      "path": "assets/proprietary/gm/body_shield.gm1"
+    },
+    {
+      "id": "body_siege_engineer",
+      "path": "assets/proprietary/gm/body_siege_engineer.gm1"
+    },
+    {
+      "id": "body_siege_tower",
+      "path": "assets/proprietary/gm/body_siege_tower.gm1"
+    },
+    {
+      "id": "body_spearman",
+      "path": "assets/proprietary/gm/body_spearman.gm1"
+    },
+    {
+      "id": "body_splash",
+      "path": "assets/proprietary/gm/body_splash.gm1"
+    },
+    {
+      "id": "body_steam",
+      "path": "assets/proprietary/gm/body_steam.gm1"
+    },
+    {
+      "id": "body_stonemason",
+      "path": "assets/proprietary/gm/body_stonemason.gm1"
+    },
+    {
+      "id": "body_swordsman",
+      "path": "assets/proprietary/gm/body_swordsman.gm1"
+    },
+    {
+      "id": "body_tanner",
+      "path": "assets/proprietary/gm/body_tanner.gm1"
+    },
+    {
+      "id": "body_tent",
+      "path": "assets/proprietary/gm/body_tent.gm1"
+    },
+    {
+      "id": "body_trader",
+      "path": "assets/proprietary/gm/body_trader.gm1"
+    },
+    {
+      "id": "body_trebutchet",
+      "path": "assets/proprietary/gm/body_trebutchet.gm1"
+    },
+    {
+      "id": "body_tunnelor",
+      "path": "assets/proprietary/gm/body_tunnelor.gm1"
+    },
+    {
+      "id": "body_wolf",
+      "path": "assets/proprietary/gm/body_wolf.gm1"
+    },
+    {
+      "id": "body_woodcutter",
+      "path": "assets/proprietary/gm/body_woodcutter.gm1"
+    },
+    {
+      "id": "cracks",
+      "path": "assets/proprietary/gm/cracks.gm1"
+    },
+    {
+      "id": "cursors",
+      "path": "assets/proprietary/gm/cursors.gm1"
+    },
+    {
+      "id": "enemy_faces",
+      "path": "assets/proprietary/gm/enemy_faces.gm1"
+    },
+    {
+      "id": "face800-blank",
+      "path": "assets/proprietary/gm/face800-blank.gm1"
+    },
+    {
+      "id": "float_pop_circ",
+      "path": "assets/proprietary/gm/float_pop_circ.gm1"
+    },
+    {
+      "id": "floats",
+      "path": "assets/proprietary/gm/floats.gm1"
+    },
+    {
+      "id": "floats_new",
+      "path": "assets/proprietary/gm/floats_new.gm1"
+    },
+    {
+      "id": "font_slanted",
+      "path": "assets/proprietary/gm/font_slanted.gm1"
+    },
+    {
+      "id": "font_stronghold",
+      "path": "assets/proprietary/gm/font_stronghold.gm1"
+    },
+    {
+      "id": "font_stronghold_aa",
+      "path": "assets/proprietary/gm/font_stronghold_aa.gm1"
+    },
+    {
+      "id": "icons_front_end",
+      "path": "assets/proprietary/gm/icons_front_end.gm1"
+    },
+    {
+      "id": "icons_front_end_builder",
+      "path": "assets/proprietary/gm/icons_front_end_builder.gm1"
+    },
+    {
+      "id": "icons_front_end_combat",
+      "path": "assets/proprietary/gm/icons_front_end_combat.gm1"
+    },
+    {
+      "id": "icons_front_end_economics",
+      "path": "assets/proprietary/gm/icons_front_end_economics.gm1"
+    },
+    {
+      "id": "icons_placeholders",
+      "path": "assets/proprietary/gm/icons_placeholders.gm1"
+    },
+    {
+      "id": "interface_army",
+      "path": "assets/proprietary/gm/interface_army.gm1"
+    },
+    {
+      "id": "interface_buttons",
+      "path": "assets/proprietary/gm/interface_buttons.gm1"
+    },
+    {
+      "id": "interface_icons2",
+      "path": "assets/proprietary/gm/interface_icons2.gm1"
+    },
+    {
+      "id": "interface_icons3",
+      "path": "assets/proprietary/gm/interface_icons3.gm1"
+    },
+    {
+      "id": "interface_ruins",
+      "path": "assets/proprietary/gm/interface_ruins.gm1"
+    },
+    {
+      "id": "interface_slider_bar",
+      "path": "assets/proprietary/gm/interface_slider_bar.gm1"
+    },
+    {
+      "id": "killing_pits",
+      "path": "assets/proprietary/gm/killing_pits.gm1"
+    },
+    {
+      "id": "mapedit_buttons",
+      "path": "assets/proprietary/gm/mapedit_buttons.gm1"
+    },
+    {
+      "id": "mini_cursors",
+      "path": "assets/proprietary/gm/mini_cursors.gm1"
+    },
+    {
+      "id": "oil_dropped",
+      "path": "assets/proprietary/gm/oil_dropped.gm1"
+    },
+    {
+      "id": "pitch_ditches",
+      "path": "assets/proprietary/gm/pitch_ditches.gm1"
+    },
+    {
+      "id": "puff of smoke",
+      "path": "assets/proprietary/gm/puff of smoke.gm1"
+    },
+    {
+      "id": "rock_chips",
+      "path": "assets/proprietary/gm/rock_chips.gm1"
+    },
+    {
+      "id": "scribe",
+      "path": "assets/proprietary/gm/scribe.gm1"
+    },
+    {
+      "id": "skirmish_trail_icons",
+      "path": "assets/proprietary/gm/skirmish_trail_icons.gm1"
+    },
+    {
+      "id": "smoke-30x30",
+      "path": "assets/proprietary/gm/smoke-30x30.gm1"
+    },
+    {
+      "id": "super chicken",
+      "path": "assets/proprietary/gm/super chicken.gm1"
+    },
+    {
+      "id": "tile_buildings1",
+      "path": "assets/proprietary/gm/tile_buildings1.gm1"
+    },
+    {
+      "id": "tile_buildings2",
+      "path": "assets/proprietary/gm/tile_buildings2.gm1"
+    },
+    {
+      "id": "tile_burnt",
+      "path": "assets/proprietary/gm/tile_burnt.gm1"
+    },
+    {
+      "id": "tile_castle",
+      "path": "assets/proprietary/gm/tile_castle.gm1"
+    },
+    {
+      "id": "tile_chevrons",
+      "path": "assets/proprietary/gm/tile_chevrons.gm1"
+    },
+    {
+      "id": "tile_churches",
+      "path": "assets/proprietary/gm/tile_churches.gm1"
+    },
+    {
+      "id": "tile_cliffs",
+      "path": "assets/proprietary/gm/tile_cliffs.gm1"
+    },
+    {
+      "id": "tile_data",
+      "path": "assets/proprietary/gm/tile_data.gm1"
+    },
+    {
+      "id": "tile_farmland",
+      "path": "assets/proprietary/gm/tile_farmland.gm1"
+    },
+    {
+      "id": "tile_flatties",
+      "path": "assets/proprietary/gm/tile_flatties.gm1"
+    },
+    {
+      "id": "tile_goods",
+      "path": "assets/proprietary/gm/tile_goods.gm1"
+    },
+    {
+      "id": "tile_land3",
+      "path": "assets/proprietary/gm/tile_land3.gm1"
+    },
+    {
+      "id": "tile_land8",
+      "path": "assets/proprietary/gm/tile_land8.gm1"
+    },
+    {
+      "id": "tile_land_and_stones",
+      "path": "assets/proprietary/gm/tile_land_and_stones.gm1"
+    },
+    {
+      "id": "tile_land_macros",
+      "path": "assets/proprietary/gm/tile_land_macros.gm1"
+    },
+    {
+      "id": "tile_rivers",
+      "path": "assets/proprietary/gm/tile_rivers.gm1"
+    },
+    {
+      "id": "tile_rocks8",
+      "path": "assets/proprietary/gm/tile_rocks8.gm1"
+    },
+    {
+      "id": "tile_rocks_chevrons",
+      "path": "assets/proprietary/gm/tile_rocks_chevrons.gm1"
+    },
+    {
+      "id": "tile_ruins",
+      "path": "assets/proprietary/gm/tile_ruins.gm1"
+    },
+    {
+      "id": "tile_sea8",
+      "path": "assets/proprietary/gm/tile_sea8.gm1"
+    },
+    {
+      "id": "tile_sea_new_01",
+      "path": "assets/proprietary/gm/tile_sea_new_01.gm1"
+    },
+    {
+      "id": "tile_walls",
+      "path": "assets/proprietary/gm/tile_walls.gm1"
+    },
+    {
+      "id": "tile_workshops",
+      "path": "assets/proprietary/gm/tile_workshops.gm1"
+    },
+    {
+      "id": "tree_apple",
+      "path": "assets/proprietary/gm/tree_apple.gm1"
+    },
+    {
+      "id": "tree_birch",
+      "path": "assets/proprietary/gm/tree_birch.gm1"
+    },
+    {
+      "id": "tree_cactii",
+      "path": "assets/proprietary/gm/tree_cactii.gm1"
+    },
+    {
+      "id": "tree_oak",
+      "path": "assets/proprietary/gm/tree_oak.gm1"
+    },
+    {
+      "id": "tree_pine",
+      "path": "assets/proprietary/gm/tree_pine.gm1"
+    },
+    {
+      "id": "tree_shrub1",
+      "path": "assets/proprietary/gm/tree_shrub1.gm1"
+    },
+    {
+      "id": "tree_shrub2",
+      "path": "assets/proprietary/gm/tree_shrub2.gm1"
     }
   ],
   "music": [

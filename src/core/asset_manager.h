@@ -22,6 +22,12 @@
 namespace oshc::core::asset
 {
 
+using TextureMap = std::map<std::string, Texture, std::less<>>;
+using AnimationMap = std::map<std::string, Animation, std::less<>>;
+using SoundMap = std::map<std::string, Sound, std::less<>>;
+using MusicMap = std::map<std::string, Music, std::less<>>;
+using FontMap = std::map<std::string, Font, std::less<>>;
+
 class AssetManager
 {
   public:
@@ -64,18 +70,41 @@ class AssetManager
      */
     Music get_music(const std::string &id);
 
+    /**
+     * @brief Get font
+     *
+     * @param id Font id
+     * @return Font
+     */
+    Font get_font(const std::string &id);
+
+    /**
+     * @brief Get all textures as ref
+     *
+     */
+    TextureMap &get_textures();
+
+    /**
+     * @brief Get all animations as ref
+     *
+     */
+    AnimationMap &get_animations();
+
   private:
     /// @brief Map of textures
-    std::map<std::string, Texture, std::less<>> textures;
+    TextureMap m_textures;
 
     /// @brief Map of animations
-    std::map<std::string, Animation, std::less<>> animations;
+    AnimationMap m_animations;
 
     /// @brief Map of sounds
-    std::map<std::string, Sound, std::less<>> sounds;
+    SoundMap m_sounds;
 
     /// @brief Map of music
-    std::map<std::string, Music, std::less<>> music;
+    MusicMap m_music;
+
+    /// @brief Map of fonts
+    FontMap m_fonts;
 };
 
 } // namespace oshc::core::asset

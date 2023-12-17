@@ -16,6 +16,7 @@
 
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
+#include <SDL2/SDL_mixer.h>
 #include <iostream>
 
 namespace oshc::core
@@ -34,6 +35,9 @@ extern oshc::core::asset::AssetManager asset_manager;
 
 // @breif Global state engine
 extern oshc::core::state::StateEngine state_engine;
+
+// @breif Global dev font
+extern TTF_Font *dev_font;
 
 /**
  * @brief Initialize SDL2 and create window

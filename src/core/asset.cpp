@@ -3,6 +3,7 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL_mixer.h>
+#include <SDL2/SDL_ttf.h>
 #include <iostream>
 
 #include "../lib/parsers/gm1_parser.h"
@@ -191,6 +192,25 @@ void Music::set_volume(int volume) const
 bool Music::is_playing() const
 {
     return Mix_PlayingMusic() == 1;
+}
+
+// Font
+void Font::load(const std::string &path, unsigned int size)
+{
+    m_data = std::shared_ptr<TTF_Font>(TTF_OpenFont(path.c_str(), size), TTF_CloseFont);
+    this->m_size = size;
+
+    if (m_data == nullptr)
+    {
+        std::cout << "Failed to load font: " << path << std::endl;
+        std::cout << "SDL Error: " << SDL_GetError() << std::endl;
+        return;
+    }
+}
+
+std::shared_ptr<TTF_Font> Font::get() const
+{
+    return this->m_data;
 }
 
 } // namespace oshc::core::asset

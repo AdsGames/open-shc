@@ -20,6 +20,7 @@ void StateEngine::render() const
         return;
     }
 
+    SDL_SetRenderDrawColor(oshc::core::renderer, 0, 0, 0, 255);
     SDL_RenderClear(oshc::core::renderer);
     m_state->render();
     SDL_RenderPresent(oshc::core::renderer);

@@ -14,6 +14,7 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL_mixer.h>
+#include <SDL2/SDL_ttf.h>
 #include <memory>
 #include <vector>
 
@@ -232,4 +233,36 @@ class Music : public Asset
     /// @brief Shared pointer to underlying music
     std::shared_ptr<Mix_Music> m_data;
 };
+
+/**
+ * @brief Font asset
+ *
+ */
+class Font : public Asset
+{
+  public:
+    ~Font() override = default;
+
+    /**
+     * @brief Load font from file
+     *
+     * @param path Path to font file
+     */
+    void load(const std::string &path, unsigned int size);
+
+    /**
+     * @brief Get the font
+     *
+     * @return std::shared_ptr<TTF_Font>
+     */
+    std::shared_ptr<TTF_Font> get() const;
+
+  private:
+    /// @brief Shared pointer to underlying font
+    std::shared_ptr<TTF_Font> m_data;
+
+    /// @brief Size of font
+    unsigned int m_size;
+};
+
 } // namespace oshc::core::asset

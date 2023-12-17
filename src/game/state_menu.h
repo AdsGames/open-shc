@@ -12,6 +12,7 @@
 #pragma once
 
 #include "../core/state.h"
+#include "asset_viewer.h"
 
 namespace oshc::state
 {
@@ -60,7 +61,7 @@ class StateMenu : public oshc::core::state::State
     void destroy() override{};
 
   private:
-    int m_anim_frame = 0;
+    AssetViewer m_asset_viewer;
 };
 
 } // namespace oshc::state
