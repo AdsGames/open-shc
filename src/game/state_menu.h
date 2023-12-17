@@ -15,6 +15,11 @@
 
 namespace oshc::state
 {
+
+/**
+ * @brief Menu state
+ *
+ */
 class StateMenu : public oshc::core::state::State
 {
   public:
@@ -22,7 +27,7 @@ class StateMenu : public oshc::core::state::State
      * @brief Construct a new State Menu object
      *
      */
-    explicit StateMenu(oshc::core::state::StateEngine &engine) : oshc::core::state::State(engine){};
+    using State::State;
 
     /**
      * @brief Destroy the State Menu object
@@ -34,13 +39,13 @@ class StateMenu : public oshc::core::state::State
      * @brief Init state
      *
      */
-    void init() override{};
+    void init() override;
 
     /**
      * @brief Update state
      *
      */
-    void update() override{};
+    void update() override;
 
     /**
      * @brief Render state
@@ -53,6 +58,9 @@ class StateMenu : public oshc::core::state::State
      *
      */
     void destroy() override{};
+
+  private:
+    int m_anim_frame = 0;
 };
 
 } // namespace oshc::state

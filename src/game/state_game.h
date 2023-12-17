@@ -15,6 +15,11 @@
 
 namespace oshc::state
 {
+
+/**
+ * @brief Game state
+ *
+ */
 class StateGame : public oshc::core::state::State
 {
   public:
@@ -22,7 +27,7 @@ class StateGame : public oshc::core::state::State
      * @brief Construct a new State Game object
      *
      */
-    explicit StateGame(oshc::core::state::StateEngine &engine) : oshc::core::state::State(engine){};
+    using State::State;
 
     /**
      * @brief Destroy the State Game object

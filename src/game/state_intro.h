@@ -27,7 +27,7 @@ class StateIntro : public oshc::core::state::State
      * @brief Construct a new State Intro object
      *
      */
-    explicit StateIntro(oshc::core::state::StateEngine &engine) : oshc::core::state::State(engine){};
+    using State::State;
 
     /**
      * @brief Destroy the State Intro object

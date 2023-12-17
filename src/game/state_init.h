@@ -15,6 +15,11 @@
 
 namespace oshc::state
 {
+
+/**
+ * @brief Initial state
+ *
+ */
 class StateInit : public oshc::core::state::State
 {
   public:
@@ -22,7 +27,7 @@ class StateInit : public oshc::core::state::State
      * @brief Construct a new State Init object
      *
      */
-    explicit StateInit(oshc::core::state::StateEngine &engine) : oshc::core::state::State(engine){};
+    using State::State;
 
     /**
      * @brief Destroy the State Init object

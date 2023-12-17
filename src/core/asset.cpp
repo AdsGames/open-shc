@@ -126,6 +126,26 @@ unsigned int Animation::get_frame_count() const
     return static_cast<unsigned int>(this->m_data.size());
 }
 
+// Sound
+void Sound::load(const std::string &path)
+{
+    m_data = std::shared_ptr<Mix_Chunk>(Mix_LoadWAV(path.c_str()), Mix_FreeChunk);
+
+    if (m_data == nullptr)
+    {
+        std::cout << "Failed to load sound: " << path << std::endl;
+        std::cout << "SDL Error: " << SDL_GetError() << std::endl;
+        return;
+    }
+
+    Mix_VolumeChunk(m_data.get(), 32);
+}
+
+void Sound::play() const
+{
+    Mix_PlayChannel(-1, m_data.get(), 0);
+}
+
 // Music
 void Music::load(const std::string &path)
 {

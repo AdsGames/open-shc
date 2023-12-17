@@ -49,6 +49,14 @@ class AssetManager
     Animation get_animation(const std::string &id);
 
     /**
+     * @brief Get a sound
+     *
+     * @param id Sound id
+     * @return Sound
+     */
+    Sound get_sound(const std::string &id);
+
+    /**
      * @brief Get music
      *
      * @param id Music id
@@ -62,6 +70,9 @@ class AssetManager
 
     /// @brief Map of animations
     std::map<std::string, Animation, std::less<>> animations;
+
+    /// @brief Map of sounds
+    std::map<std::string, Sound, std::less<>> sounds;
 
     /// @brief Map of music
     std::map<std::string, Music, std::less<>> music;

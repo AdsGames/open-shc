@@ -48,6 +48,15 @@ void AssetManager::init(const std::string &config_file_path)
         m.load(curr["path"]);
         this->music[curr["id"]] = m;
     }
+
+    // Load sounds
+    for (auto &curr : j["sounds"])
+    {
+        std::cout << "Loading sound: " << curr["id"] << std::endl;
+        Sound s;
+        s.load(curr["path"]);
+        this->sounds[curr["id"]] = s;
+    }
 }
 
 // Get texture
@@ -60,6 +69,12 @@ Texture AssetManager::get_texture(const std::string &id)
 Animation AssetManager::get_animation(const std::string &id)
 {
     return animations[id];
+}
+
+// Get sound
+Sound AssetManager::get_sound(const std::string &id)
+{
+    return sounds[id];
 }
 
 // Get music

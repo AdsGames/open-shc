@@ -153,6 +153,33 @@ class Animation : public Asset
 };
 
 /**
+ * @brief Sound asset
+ *
+ */
+class Sound : public Asset
+{
+  public:
+    ~Sound() override = default;
+
+    /**
+     * @brief Load sound from file
+     *
+     * @param path Path to sound file
+     */
+    void load(const std::string &path);
+
+    /**
+     * @brief Play sound
+     *
+     */
+    void play() const;
+
+  private:
+    /// @brief Shared pointer to underlying sound
+    std::shared_ptr<Mix_Chunk> m_data;
+};
+
+/**
  * @brief Music asset
  *
  */

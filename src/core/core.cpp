@@ -14,7 +14,7 @@ oshc::core::state::StateEngine state_engine = oshc::core::state::StateEngine();
 
 void init()
 {
-    if (SDL_Init(SDL_INIT_VIDEO) < 0)
+    if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO) < 0)
     {
         std::cout << "Failed to init SDL2: " << SDL_GetError() << std::endl;
         exit(1);

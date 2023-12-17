@@ -23,6 +23,16 @@
     {
       "id": "a_pane_in_the_glass",
       "path": "assets/proprietary/soundtrack/A Pane in the Glass.mp3"
+    },
+    {
+      "id": "a_strong_spice",
+      "path": "assets/proprietary/soundtrack/A Strong Spice.mp3"
+    }
+  ],
+  "sounds": [
+    {
+      "id": "greetings_fatal_exception",
+      "path": "assets/proprietary/fx/speech/name215.wav"
     }
   ]
 }
