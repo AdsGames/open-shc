@@ -12,6 +12,7 @@
 #pragma once
 
 #include "asset_manager.h"
+#include "state.h"
 
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
@@ -29,7 +30,10 @@ extern SDL_Renderer *renderer;
 extern SDL_Window *window;
 
 /// @brief Global asset manager
-extern oshc::asset::AssetManager asset_manager;
+extern oshc::core::asset::AssetManager asset_manager;
+
+// @breif Global state engine
+extern oshc::core::state::StateEngine state_engine;
 
 /**
  * @brief Initialize SDL2 and create window

@@ -17,7 +17,7 @@
 #include <memory>
 #include <vector>
 
-namespace oshc::asset
+namespace oshc::core::asset
 {
 
 /**
@@ -205,4 +205,4 @@ class Music : public Asset
     /// @brief Shared pointer to underlying music
     std::shared_ptr<Mix_Music> m_data;
 };
-} // namespace oshc::asset
+} // namespace oshc::core::asset
