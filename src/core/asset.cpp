@@ -9,7 +9,7 @@
 #include "../lib/parsers/tgx_parser.h"
 #include "core.h"
 
-namespace oshc::asset
+namespace oshc::core::asset
 {
 
 // Texture
@@ -173,4 +173,4 @@ bool Music::is_playing() const
     return Mix_PlayingMusic() == 1;
 }
 
-} // namespace oshc::asset
+} // namespace oshc::core::asset

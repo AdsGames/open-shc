@@ -4,7 +4,7 @@
 #include <iostream>
 #include <nlohmann/json.hpp>
 
-namespace oshc::asset
+namespace oshc::core::asset
 {
 
 // Load assets from json
@@ -68,4 +68,4 @@ Music AssetManager::get_music(const std::string &id)
     return music[id];
 }
 
-} // namespace oshc::asset
+} // namespace oshc::core::asset

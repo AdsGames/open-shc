@@ -19,7 +19,7 @@
 
 #include "asset.h"
 
-namespace oshc::asset
+namespace oshc::core::asset
 {
 
 class AssetManager
@@ -67,4 +67,4 @@ class AssetManager
     std::map<std::string, Music, std::less<>> music;
 };
 
-} // namespace oshc::asset
+} // namespace oshc::core::asset

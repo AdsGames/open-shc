@@ -8,7 +8,9 @@ SDL_Renderer *renderer = nullptr;
 
 SDL_Window *window = nullptr;
 
-oshc::asset::AssetManager asset_manager = oshc::asset::AssetManager();
+oshc::core::asset::AssetManager asset_manager = oshc::core::asset::AssetManager();
+
+oshc::core::state::StateEngine state_engine = oshc::core::state::StateEngine();
 
 void init()
 {

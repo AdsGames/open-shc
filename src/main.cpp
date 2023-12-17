@@ -3,25 +3,40 @@
 #include <iostream>
 #include <vector>
 
-#include "core/asset_manager.h"
 #include "core/core.h"
 
+/**
+ * @brief Entry point for the program
+ *
+ * @param argc Number of arguments
+ * @param argv Array of arguments
+ * @return int Exit code
+ */
 int main(int argc, char **argv)
 {
-    oshc::core::init();
-    oshc::core::asset_manager.init("assets/config/assets.json");
+    oshc::core::state_engine.set_next_state(oshc::core::state::ProgramState::STATE_INIT);
 
-    std::cout << "Hello World!" << std::endl;
-
-    oshc::core::asset_manager.get_music("a_pane_in_the_glass").play();
-
-    for (int i = 0; i < 100; i++)
+    while (oshc::core::state_engine.get_active_state_id() != oshc::core::state::ProgramState::STATE_EXIT)
     {
-        SDL_RenderClear(oshc::core::renderer);
-        SDL_RenderCopy(oshc::core::renderer, oshc::core::asset_manager.get_texture("frontend_loading").get().get(),
-                       nullptr, nullptr);
-        SDL_RenderPresent(oshc::core::renderer);
-        SDL_Delay(100);
+        oshc::core::state_engine.update();
+        oshc::core::state_engine.render();
+
+        // Check if esc pressed
+        SDL_Event event;
+        while (SDL_PollEvent(&event))
+        {
+            if (event.type == SDL_QUIT)
+            {
+                oshc::core::state_engine.set_next_state(oshc::core::state::ProgramState::STATE_EXIT);
+            }
+            if (event.type == SDL_KEYDOWN)
+            {
+                if (event.key.keysym.sym == SDLK_ESCAPE)
+                {
+                    oshc::core::state_engine.set_next_state(oshc::core::state::ProgramState::STATE_EXIT);
+                }
+            }
+        }
     }
 
     return 0;

@@ -8,6 +8,10 @@ WIP Open Source Stornghold Crusader clone
 
 ## Setup
 
+### Assets
+
+Copy your entire Stronghold Crusader folder to `assets/proprietary/`
+
 ### Windows (MSYS2)
 
 ```bash
