@@ -26,7 +26,6 @@ if(NOT EMSCRIPTEN)
   find_library(SDL_MIXER_LIBRARY NAMES SDL2_mixer REQUIRED)
   find_library(SDL_IMAGE_LIBRARY NAMES SDL2_image REQUIRED)
   find_library(SDL_TTF_LIBRARY NAMES SDL2_ttf REQUIRED)
-  find_library(SDL_GFX_LIBRARY NAMES SDL2_gfx REQUIRED)
   find_library(SDL_MAIN_LIBRARY NAMES SDL2main REQUIRED)
 endif(NOT EMSCRIPTEN)
 
@@ -43,7 +42,6 @@ if(EMSCRIPTEN)
     -sUSE_SDL_IMAGE=2 
     -sUSE_SDL_TTF=2 
     -sUSE_SDL_MIXER=2 
-    -sUSE_SDL_GFX=2 
     -sSDL2_IMAGE_FORMATS=["png"]
     -sSTACK_SIZE=128MB
   )
@@ -54,7 +52,6 @@ if(EMSCRIPTEN)
     -sUSE_SDL_IMAGE=2 
     -sUSE_SDL_TTF=2 
     -sUSE_SDL_MIXER=2 
-    -sUSE_SDL_GFX=2 
     -sSDL2_IMAGE_FORMATS=["png"] 
     -sDEMANGLE_SUPPORT=1
     -sTOTAL_MEMORY=512MB
@@ -81,7 +78,6 @@ else(EMSCRIPTEN)
     ${SDL_MIXER_LIBRARY}
     ${SDL_IMAGE_LIBRARY}
     ${SDL_TTF_LIBRARY}
-    ${SDL_GFX_LIBRARY}
     nlohmann_json::nlohmann_json
   )
 endif(EMSCRIPTEN)
