@@ -5,6 +5,9 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/build)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
+option(TRACY_ENABLE "" ON)
+option(TRACY_ON_DEMAND "" ON)
+
 include(FetchContent)
 
 project (open_stronghold)
@@ -19,6 +22,15 @@ target_compile_options(${PROJECT_NAME} PRIVATE -Wall -Wextra -pedantic)
 
 FetchContent_Declare(json URL https://github.com/nlohmann/json/releases/download/v3.11.2/json.tar.xz)
 FetchContent_MakeAvailable(json)
+
+FetchContent_Declare(
+  tracy
+  GIT_REPOSITORY https://github.com/wolfpld/tracy.git
+  GIT_TAG v0.10
+  GIT_SHALLOW TRUE
+  GIT_PROGRESS TRUE
+)
+FetchContent_MakeAvailable(tracy)
 
 # Find libs
 if(NOT EMSCRIPTEN)
@@ -84,6 +96,10 @@ else(EMSCRIPTEN)
     ${SDL_GFX_LIBRARY}
     nlohmann_json::nlohmann_json
   )
+
+  if(TRACY_ENABLE)
+    target_link_libraries(${PROJECT_NAME} TracyClient)
+  endif(TRACY_ENABLE)
 endif(EMSCRIPTEN)
 
 file(COPY ${CMAKE_CURRENT_LIST_DIR}/assets/ DESTINATION ${CMAKE_BINARY_DIR}/build/assets/)

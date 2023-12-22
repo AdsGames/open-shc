@@ -20,10 +20,10 @@ void StateEngine::render() const
         return;
     }
 
-    SDL_SetRenderDrawColor(oshc::core::renderer, 0, 0, 0, 255);
-    SDL_RenderClear(oshc::core::renderer);
+    SDL_SetRenderDrawColor(oshc::core::renderer.get(), 0, 0, 0, 255);
+    SDL_RenderClear(oshc::core::renderer.get());
     m_state->render();
-    SDL_RenderPresent(oshc::core::renderer);
+    SDL_RenderPresent(oshc::core::renderer.get());
 }
 
 void StateEngine::update()
@@ -65,22 +65,22 @@ void StateEngine::change_state()
     switch (m_next_state)
     {
     case ProgramState::STATE_GAME:
-        m_state = std::make_unique<oshc::state::StateGame>(*this);
+        m_state = std::make_unique<oshc::state::StateGame>();
         std::cout << "Switched state to game." << std::endl;
         break;
 
     case ProgramState::STATE_MENU:
-        m_state = std::make_unique<oshc::state::StateMenu>(*this);
+        m_state = std::make_unique<oshc::state::StateMenu>();
         std::cout << "Switched state to main menu." << std::endl;
         break;
 
     case ProgramState::STATE_INIT:
-        m_state = std::make_unique<oshc::state::StateInit>(*this);
+        m_state = std::make_unique<oshc::state::StateInit>();
         std::cout << "Switched state to init." << std::endl;
         break;
 
     case ProgramState::STATE_INTRO:
-        m_state = std::make_unique<oshc::state::StateIntro>(*this);
+        m_state = std::make_unique<oshc::state::StateIntro>();
         std::cout << "Switched state to intro." << std::endl;
         break;
 
@@ -89,7 +89,10 @@ void StateEngine::change_state()
         break;
     }
 
-    m_state->init();
+    if (m_state)
+    {
+        m_state->init();
+    }
 
     // Change the current state ID
     m_active_state = m_next_state;

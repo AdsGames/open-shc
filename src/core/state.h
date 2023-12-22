@@ -95,7 +95,7 @@ class State
      *
      * @param engine State engine reference
      */
-    explicit State(StateEngine &engine) : engine(engine){};
+    explicit State() = default;
 
     /// @brief Default destructor
     virtual ~State() = default;
@@ -123,10 +123,6 @@ class State
      *
      */
     virtual void update() = 0;
-
-  private:
-    /// @brief State engine reference
-    StateEngine &engine;
 };
 
 } // namespace oshc::core::state

@@ -5,11 +5,11 @@
 
 namespace oshc::core
 {
-SDL_Renderer *renderer = nullptr;
+std::shared_ptr<SDL_Renderer> renderer = nullptr;
 
-SDL_Window *window = nullptr;
+std::shared_ptr<SDL_Window> window = nullptr;
 
-oshc::core::asset::AssetManager asset_manager = oshc::core::asset::AssetManager();
+oshc::asset::AssetManager asset_manager = oshc::asset::AssetManager();
 
 oshc::core::state::StateEngine state_engine = oshc::core::state::StateEngine();
 
@@ -48,8 +48,9 @@ void init()
     }
 
     // Create window
-    window =
-        SDL_CreateWindow("OpenSHC", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 1920, 1080, SDL_WINDOW_SHOWN);
+    window = std::shared_ptr<SDL_Window>(
+        SDL_CreateWindow("OpenSHC", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 1280, 960, SDL_WINDOW_SHOWN),
+        SDL_DestroyWindow);
 
     if (window == nullptr)
     {
@@ -57,13 +58,30 @@ void init()
         exit(1);
     }
 
-    renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
+    renderer = std::shared_ptr<SDL_Renderer>(
+        SDL_CreateRenderer(window.get(), -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC),
+        SDL_DestroyRenderer);
 
     if (renderer == nullptr)
     {
         std::cout << "Failed to create renderer: " << SDL_GetError() << std::endl;
         exit(1);
     }
+}
+
+void destroy()
+{
+    std::cout << "Stopping music..." << std::endl;
+    Mix_CloseAudio();
+
+    std::cout << "Destroying asset manager..." << std::endl;
+    asset_manager.destroy();
+
+    std::cout << "Destroying SDL2..." << std::endl;
+    TTF_Quit();
+    Mix_Quit();
+    IMG_Quit();
+    SDL_Quit();
 }
 
 } // namespace oshc::core

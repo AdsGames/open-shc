@@ -3,10 +3,15 @@
     {
       "id": "default",
       "path": "assets/fonts/dosis.ttf",
+
       "size": 16
     }
   ],
   "textures": [
+    {
+      "id": "ads_logo",
+      "path": "assets/images/logo.png"
+    },
     {
       "id": "1280r",
       "path": "assets/proprietary/gfx/1280r.tgx"

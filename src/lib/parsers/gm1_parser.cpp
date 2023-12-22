@@ -3,26 +3,30 @@
 #include <fstream>
 #include <iostream>
 #include <string>
+#include <tracy/Tracy.hpp>
 #include <vector>
 
 #include "../../core/core.h"
 #include "tgx_parser.h"
 
+constexpr unsigned int GM1_HEADER_SIZE = 88;
+constexpr unsigned int GM1_PALLETE_SIZE = 5120;
+
 // Convert 4 chars to int32
-unsigned int GM1Parser::chars_to_int(unsigned char a, unsigned char b, unsigned char c, unsigned char d)
+unsigned int chars_to_int(unsigned char a, unsigned char b, unsigned char c, unsigned char d)
 {
     return a | (b << 8) | (c << 16) | (d << 24);
 }
 
 // Load animation
-SDL_Texture *GM1Parser::load_gm1_animation(std::vector<unsigned char> *bytes, unsigned int *iter, GM1Data *image_data,
-                                           std::vector<unsigned int> *pall)
+std::shared_ptr<SDL_Texture> load_gm1_animation(std::vector<unsigned char> *bytes, unsigned int *iter,
+                                                GM1Data *image_data, std::vector<unsigned int> *pall)
 {
-    return TGXParser::load_tgx_helper(bytes, iter, image_data->width, image_data->height, pall);
+    return load_tgx_helper(bytes, iter, image_data->width, image_data->height, pall);
 }
 
 // Load tile
-SDL_Texture *GM1Parser::load_gm1_tile(std::vector<unsigned char> *bytes, unsigned int *iter, GM1Data *image_data)
+std::shared_ptr<SDL_Texture> load_gm1_tile(std::vector<unsigned char> *bytes, unsigned int *iter, GM1Data *image_data)
 {
     // File iterator and image x and y
     unsigned int pixels_per_line = 2;
@@ -31,9 +35,10 @@ SDL_Texture *GM1Parser::load_gm1_tile(std::vector<unsigned char> *bytes, unsigne
     unsigned int y = 0;
 
     // Make bitmap
-    SDL_PixelFormat *pixel_format = SDL_AllocFormat(SDL_PIXELFORMAT_RGBA8888);
-    SDL_Texture *texture = SDL_CreateTexture(oshc::core::renderer, pixel_format->format, SDL_TEXTUREACCESS_STREAMING,
-                                             image_data->width, image_data->height);
+    auto texture = std::shared_ptr<SDL_Texture>(SDL_CreateTexture(oshc::core::renderer.get(), SDL_PIXELFORMAT_RGBA8888,
+                                                                  SDL_TEXTUREACCESS_STREAMING, image_data->width,
+                                                                  image_data->height),
+                                                SDL_DestroyTexture);
 
     if (texture == nullptr)
     {
@@ -44,52 +49,58 @@ SDL_Texture *GM1Parser::load_gm1_tile(std::vector<unsigned char> *bytes, unsigne
     // Lock and dump pixels
     Uint32 *pixels = nullptr;
     int pitch = 0;
-    if (SDL_LockTexture(texture, nullptr, (void **)&pixels, &pitch))
+    if (SDL_LockTexture(texture.get(), nullptr, (void **)&pixels, &pitch))
     {
         std::cout << "Failed to lock texture: " << SDL_GetError() << std::endl;
         return nullptr;
     }
 
     // Parse file
-    for (unsigned int t = 0; t < img_size; t++)
+    for (unsigned int t = 0; t < img_size; ++t)
     {
         // Break if we go too far
         if (*iter + 1 > bytes->size())
+        {
             break;
+        }
 
         // Get pixel position
         Uint32 pixel_pos = y * (pitch / sizeof(unsigned int)) + x;
-        pixels[pixel_pos] = TGXParser::convert_color(pixel_format, bytes->at(*iter), bytes->at(*iter + 1));
-        x++;
+        pixels[pixel_pos] = convert_color((*bytes)[*iter], (*bytes)[*iter + 1]);
+        ++x;
         *iter += 2;
 
         if (x > 14 + pixels_per_line / 2)
         {
             if (y < 7)
+            {
                 pixels_per_line += 4;
+            }
             else if (y > 7)
+            {
                 pixels_per_line -= 4;
+            }
 
             y += 1;
             x = 15 - pixels_per_line / 2;
         }
     }
 
-    SDL_UnlockTexture(texture);
+    SDL_UnlockTexture(texture.get());
 
     // Return bmp
     return texture;
 }
 
 // Load tgx
-SDL_Texture *GM1Parser::load_gm1_tgx(std::vector<unsigned char> *bytes, unsigned int *iter, GM1Data *image_data)
+std::shared_ptr<SDL_Texture> load_gm1_tgx(std::vector<unsigned char> *bytes, unsigned int *iter, GM1Data *image_data)
 {
-    return TGXParser::load_tgx_helper(bytes, iter, image_data->width, image_data->height);
+    return load_tgx_helper(bytes, iter, image_data->width, image_data->height);
 }
 
 // Load uncompressed
-SDL_Texture *GM1Parser::load_gm1_uncompressed(std::vector<unsigned char> *bytes, unsigned int *iter,
-                                              GM1Data *image_data)
+std::shared_ptr<SDL_Texture> load_gm1_uncompressed(std::vector<unsigned char> *bytes, unsigned int *iter,
+                                                   GM1Data *image_data)
 {
     // File iterator and image x and y
     unsigned int x = 0;
@@ -97,9 +108,10 @@ SDL_Texture *GM1Parser::load_gm1_uncompressed(std::vector<unsigned char> *bytes,
     unsigned int img_size = image_data->width * image_data->height;
 
     // Make bitmap
-    SDL_PixelFormat *pixel_format = SDL_AllocFormat(SDL_PIXELFORMAT_RGBA8888);
-    SDL_Texture *texture = SDL_CreateTexture(oshc::core::renderer, pixel_format->format, SDL_TEXTUREACCESS_STREAMING,
-                                             image_data->width, image_data->height);
+    auto texture = std::shared_ptr<SDL_Texture>(SDL_CreateTexture(oshc::core::renderer.get(), SDL_PIXELFORMAT_RGBA8888,
+                                                                  SDL_TEXTUREACCESS_STREAMING, image_data->width,
+                                                                  image_data->height),
+                                                SDL_DestroyTexture);
 
     if (texture == nullptr)
     {
@@ -110,7 +122,7 @@ SDL_Texture *GM1Parser::load_gm1_uncompressed(std::vector<unsigned char> *bytes,
     // Lock and dump pixels
     Uint32 *pixels = nullptr;
     int pitch = 0;
-    if (SDL_LockTexture(texture, nullptr, (void **)&pixels, &pitch))
+    if (SDL_LockTexture(texture.get(), nullptr, (void **)&pixels, &pitch))
     {
         std::cout << "Failed to lock texture: " << SDL_GetError() << std::endl;
         return nullptr;
@@ -125,7 +137,7 @@ SDL_Texture *GM1Parser::load_gm1_uncompressed(std::vector<unsigned char> *bytes,
 
         // Get pixel position
         Uint32 pixel_pos = y * (pitch / sizeof(unsigned int)) + x;
-        pixels[pixel_pos] = TGXParser::convert_color(pixel_format, bytes->at(*iter), bytes->at(*iter + 1));
+        pixels[pixel_pos] = convert_color((*bytes)[*iter], (*bytes)[*iter + 1]);
         x++;
 
         if (x == image_data->width)
@@ -137,65 +149,75 @@ SDL_Texture *GM1Parser::load_gm1_uncompressed(std::vector<unsigned char> *bytes,
         *iter += 2;
     }
 
-    SDL_UnlockTexture(texture);
+    SDL_UnlockTexture(texture.get());
 
     // Return bmp
     return texture;
 }
 
 // Load gm1 from file
-std::vector<SDL_Texture *> *GM1Parser::load_gm1(const std::string &filename)
+std::vector<std::shared_ptr<SDL_Texture>> load_gm1(const std::string &filename)
 {
+
     // Create file
     std::ifstream file(filename, std::ios::binary | std::ios::ate);
 
     if (!file.is_open())
     {
-        return nullptr;
+        return std::vector<std::shared_ptr<SDL_Texture>>();
     }
+
+    FrameMarkStart("Load GM1");
+
+    FrameMarkStart("Load GM1 File");
 
     std::ifstream::pos_type length = file.tellg();
 
     // Vector to dump file into
     std::vector<unsigned char> bytes(length);
 
-    // Vector to store offsets
-    std::vector<GM1Data> image_data;
-
-    // Return bitmaps
-    std::vector<SDL_Texture *> *return_bitmaps = new std::vector<SDL_Texture *>;
-
     // Read the file
     file.seekg(0, std::ios::beg);
     file.read(reinterpret_cast<char *>(bytes.data()), length);
 
+    FrameMarkEnd("Load GM1 File");
+
     // Header
-    unsigned int num_pictures = bytes.at(12) + 256 * bytes.at(13);
-    unsigned int data_type = bytes.at(20);
+    unsigned int num_pictures = (bytes[13] << 8) | bytes[12];
+    unsigned int data_type = bytes[20];
+
+    // Vector to store offsets
+    std::vector<GM1Data> image_data;
+    image_data.reserve(num_pictures);
+
+    // Return bitmaps
+    std::vector<std::shared_ptr<SDL_Texture>> return_bitmaps;
+    return_bitmaps.reserve(num_pictures);
+
+    // Create pallette
+    std::vector<unsigned int> pall;
 
     // std::cout << "GM1 Header: " << std::endl;
     // std::cout << "Number of pictures: " << num_pictures << std::endl;
     // std::cout << "Data type: " << data_type << std::endl;
 
     // Iterator, skip header
-    unsigned int i = 88;
-
-    // Create pallette
-    std::vector<unsigned int> pall;
+    unsigned int i = GM1_HEADER_SIZE;
 
     // Only animations use pallette
     if (data_type == 2)
     {
+        pall.reserve(GM1_PALLETE_SIZE / 2);
+
         // Load pallete (constant size)
-        for (unsigned int t = i; i < t + 5120; i += 2)
+        for (unsigned int t = i; i < t + GM1_PALLETE_SIZE; i += 2)
         {
-            SDL_PixelFormat *pixel_format = SDL_AllocFormat(SDL_PIXELFORMAT_RGBA8888);
-            pall.push_back(TGXParser::convert_color(pixel_format, bytes.at(i), bytes.at(i + 1)));
+            pall.push_back(convert_color(bytes[i], bytes[i + 1]));
         }
     }
 
     // Iterator, skip pallete
-    i = 5120 + 88;
+    i = GM1_PALLETE_SIZE + GM1_HEADER_SIZE;
 
     // Create empty image data
     for (unsigned int t = 0; t < num_pictures; t++)
@@ -232,8 +254,10 @@ std::vector<SDL_Texture *> *GM1Parser::load_gm1(const std::string &filename)
     // Go through each image
     for (unsigned int t = 0; t < image_data.size(); t++)
     {
+        FrameMarkStart("Load GM1 Frame");
+
         // Image data offset
-        unsigned int new_iter = i + image_data.at(t).offset;
+        unsigned int new_iter = i + image_data[t].offset;
         // std::cout << "Loading image " << image_data.at(t).index << " at " << new_iter << std::endl;
 
         // Split between many gm1 types
@@ -242,33 +266,37 @@ std::vector<SDL_Texture *> *GM1Parser::load_gm1(const std::string &filename)
         case 1:
         case 4:
         case 6:
-            image_data.at(t).image = load_gm1_tgx(&bytes, &new_iter, &image_data.at(t));
+            image_data[t].image = load_gm1_tgx(&bytes, &new_iter, &image_data[t]);
             break;
 
         case 2:
-            image_data.at(t).image = load_gm1_animation(&bytes, &new_iter, &image_data.at(t), &pall);
+            image_data[t].image = load_gm1_animation(&bytes, &new_iter, &image_data[t], &pall);
             break;
 
         case 3:
-            image_data.at(t).image = load_gm1_tile(&bytes, &new_iter, &image_data.at(t));
+            image_data[t].image = load_gm1_tile(&bytes, &new_iter, &image_data[t]);
             break;
 
         case 5:
         case 7:
-            image_data.at(t).image = load_gm1_uncompressed(&bytes, &new_iter, &image_data.at(t));
+            image_data[t].image = load_gm1_uncompressed(&bytes, &new_iter, &image_data[t]);
             break;
 
         default:
             std::cout << "Invalid data type (" << data_type << ")" << std::endl;
-            image_data.at(t).image = nullptr;
+            image_data[t].image = nullptr;
         }
 
         // Add bitmap to return vector
-        if (image_data.at(t).image)
+        if (image_data[t].image)
         {
-            return_bitmaps->push_back(image_data.at(t).image);
+            return_bitmaps.push_back(image_data[t].image);
         }
+
+        FrameMarkEnd("Load GM1 Frame");
     }
+
+    FrameMarkEnd("Load GM1");
 
     return return_bitmaps;
 }

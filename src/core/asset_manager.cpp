@@ -3,8 +3,9 @@
 #include <fstream>
 #include <iostream>
 #include <nlohmann/json.hpp>
+#include <tracy/Tracy.hpp>
 
-namespace oshc::core::asset
+namespace oshc::asset
 {
 
 // Load assets from json
@@ -25,89 +26,153 @@ void AssetManager::init(const std::string &config_file_path)
     // Load textures
     for (auto &curr : j["textures"])
     {
-        std::cout << "Loading texture: " << curr["id"] << std::endl;
-        Texture t;
-        t.load(curr["path"]);
-        this->m_textures[curr["id"]] = t;
+        auto t = std::make_shared<Texture>();
+        std::string path = curr["path"];
+        t->set_path(path);
+        this->m_assets[curr["id"]] = t;
     }
 
     // Load animations
     for (auto &curr : j["animations"])
     {
-        std::cout << "Loading animation: " << curr["id"] << std::endl;
-        Animation a;
-        a.load(curr["path"]);
-        this->m_animations[curr["id"]] = a;
+        auto a = std::make_shared<Animation>();
+        std::string path = curr["path"];
+        a->set_path(path);
+        this->m_assets[curr["id"]] = a;
     }
 
     // Load music
     for (auto &curr : j["music"])
     {
-        std::cout << "Loading music: " << curr["id"] << std::endl;
-        Music m;
-        m.load(curr["path"]);
-        this->m_music[curr["id"]] = m;
+        auto m = std::make_shared<Music>();
+        std::string path = curr["path"];
+        m->set_path(path);
+        this->m_assets[curr["id"]] = m;
     }
 
     // Load sounds
     for (auto &curr : j["sounds"])
     {
-        std::cout << "Loading sound: " << curr["id"] << std::endl;
-        Sound s;
-        s.load(curr["path"]);
-        this->m_sounds[curr["id"]] = s;
+        auto s = std::make_shared<Sound>();
+        std::string path = curr["path"];
+        s->set_path(path);
+        this->m_assets[curr["id"]] = s;
     }
 
     // Load fonts
     for (auto &curr : j["fonts"])
     {
-        std::cout << "Loading font: " << curr["id"] << std::endl;
-        Font f;
-        f.load(curr["path"], curr["size"]);
-        this->m_fonts[curr["id"]] = f;
+        auto f = std::make_shared<Font>();
+        std::string path = curr["path"];
+        f->set_path(path);
+        f->set_size(curr["size"]);
+        this->m_assets[curr["id"]] = f;
     }
 }
 
-// Get texture
-Texture AssetManager::get_texture(const std::string &id)
+// Destroy all assets
+void AssetManager::destroy()
 {
-    return this->m_textures[id];
+    m_assets.clear();
+}
+
+// Eager load one asset
+void AssetManager::eager_load_asset() const
+{
+
+    for (auto &[_, curr] : this->m_assets)
+    {
+        if (!curr->is_loaded())
+        {
+            FrameMarkStart("Load Asset");
+            curr->load();
+            FrameMarkEnd("Load Asset");
+            return;
+        }
+    }
+}
+
+// Get asset
+std::shared_ptr<Asset> AssetManager::get_asset(const std::string &id)
+{
+    const auto asset = this->m_assets.at(id);
+
+    if (asset == nullptr)
+    {
+        std::cout << "Failed to get asset: " << id << std::endl;
+        return nullptr;
+    }
+
+    if (!asset->is_loaded())
+    {
+        std::cout << "Loading asset: " << asset->get_path() << std::endl;
+        asset->load();
+    }
+
+    return asset;
+}
+
+// Get texture
+std::shared_ptr<Texture> AssetManager::get_texture(const std::string &id)
+{
+    const auto texture = get_asset(id);
+    return std::dynamic_pointer_cast<Texture>(texture);
 }
 
 // Get animation
-Animation AssetManager::get_animation(const std::string &id)
+std::shared_ptr<Animation> AssetManager::get_animation(const std::string &id)
 {
-    return this->m_animations[id];
+    const auto animation = get_asset(id);
+    return std::dynamic_pointer_cast<Animation>(animation);
 }
 
 // Get sound
-Sound AssetManager::get_sound(const std::string &id)
+std::shared_ptr<Sound> AssetManager::get_sound(const std::string &id)
 {
-    return this->m_sounds[id];
+    const auto sound = get_asset(id);
+    return std::dynamic_pointer_cast<Sound>(sound);
 }
 
 // Get music
-Music AssetManager::get_music(const std::string &id)
+std::shared_ptr<Music> AssetManager::get_music(const std::string &id)
 {
-    return this->m_music[id];
+    const auto music = get_asset(id);
+    return std::dynamic_pointer_cast<Music>(music);
 }
 
 // Get font
-Font AssetManager::get_font(const std::string &id)
+std::shared_ptr<Font> AssetManager::get_font(const std::string &id)
 {
-    return this->m_fonts[id];
+    auto font = get_asset(id);
+    return std::dynamic_pointer_cast<Font>(font);
 }
 
-// Get all textures as ref
-TextureMap &AssetManager::get_textures()
+// Get all assets
+AssetMap &AssetManager::get_assets()
 {
-    return this->m_textures;
+    return this->m_assets;
 }
 
-// Get all animations as ref
-AnimationMap &AssetManager::get_animations()
+// Get asset count
+unsigned long AssetManager::get_asset_count() const
 {
-    return this->m_animations;
+    return this->m_assets.size();
 }
 
-} // namespace oshc::core::asset
+// Get loaded asset count
+unsigned long AssetManager::get_loaded_asset_count() const
+{
+    unsigned long count = 0;
+
+    for (auto &[_, curr] : this->m_assets)
+    {
+        if (curr->is_loaded())
+        {
+            count++;
+        }
+    }
+
+    return count;
+}
+
+} // namespace oshc::asset

@@ -11,6 +11,8 @@
 
 #pragma once
 
+#include <coroutine>
+
 #include "../core/state.h"
 
 namespace oshc::state
@@ -60,8 +62,11 @@ class StateInit : public oshc::core::state::State
     void destroy() override;
 
   private:
-    /// @brief Fake loader
-    int m_fake_loader = 0;
+    /// @brief Loading percent
+    float m_loading_percent = 0.0f;
+
+    /// @brief Animation frame
+    unsigned int m_frame = 0;
 };
 
 } // namespace oshc::state

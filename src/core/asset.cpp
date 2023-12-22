@@ -10,29 +10,46 @@
 #include "../lib/parsers/tgx_parser.h"
 #include "core.h"
 
-namespace oshc::core::asset
+namespace oshc::asset
 {
 
-// Texture
-bool Texture::load(const std::string &path)
+// Base asset
+bool Asset::is_loaded() const
 {
-    if (path.ends_with(".tgx"))
+    return this->m_is_loaded;
+}
+
+void Asset::set_path(const std::string_view &path)
+{
+    this->m_path = path;
+}
+
+std::string Asset::get_path() const
+{
+    return this->m_path;
+}
+
+// Texture
+bool Texture::load()
+{
+    if (m_path.ends_with(".tgx"))
     {
-        this->load_tgx(path);
+        m_data = load_tgx(m_path);
     }
-    else if (path.ends_with(".png"))
+    else if (m_path.ends_with(".png"))
     {
-        this->load_png(path);
+        m_data = std::shared_ptr<SDL_Texture>(IMG_LoadTexture(oshc::core::renderer.get(), m_path.c_str()),
+                                              SDL_DestroyTexture);
     }
     else
     {
-        std::cout << "Unknown texture type: " << path << std::endl;
+        std::cout << "Unknown texture type: " << m_path << std::endl;
         return false;
     }
 
     if (m_data == nullptr)
     {
-        std::cout << "Failed to load texture: " << path << std::endl;
+        std::cout << "Failed to load texture: " << m_path << std::endl;
         std::cout << "SDL Error: " << SDL_GetError() << std::endl;
         return false;
     }
@@ -42,23 +59,14 @@ bool Texture::load(const std::string &path)
 
     SDL_QueryTexture(m_data.get(), nullptr, nullptr, &width, &height);
 
-    this->m_width = width;
-    this->m_height = height;
+    m_width = width;
+    m_height = height;
+    m_is_loaded = true;
 
     return true;
 }
 
-void Texture::load_png(const std::string &path)
-{
-    m_data = std::shared_ptr<SDL_Texture>(IMG_LoadTexture(oshc::core::renderer, path.c_str()), SDL_DestroyTexture);
-}
-
-void Texture::load_tgx(const std::string &path)
-{
-    m_data = std::shared_ptr<SDL_Texture>(TGXParser::load_tgx(path), SDL_DestroyTexture);
-}
-
-std::shared_ptr<SDL_Texture> Texture::get() const
+std::shared_ptr<SDL_Texture> Texture::get_data() const
 {
     return this->m_data;
 }
@@ -73,26 +81,27 @@ unsigned int Texture::get_height() const
     return this->m_height;
 }
 
-// Animation
-void Animation::load(const std::string &path)
+AssetId Texture::get_type() const
 {
-    if (!path.ends_with(".gm1"))
+    return AssetId::TEXTURE;
+}
+
+// Animation
+bool Animation::load()
+{
+    if (!m_path.ends_with(".gm1"))
     {
-        std::cout << "Unknown animation type: " << path << std::endl;
-        return;
+        std::cout << "Unknown animation type: " << m_path << std::endl;
+        return false;
     }
 
-    auto gm1 = GM1Parser::load_gm1(path);
-
-    for (auto &frame : *gm1)
+    for (const auto &texture : load_gm1(m_path))
     {
-        auto texture = std::shared_ptr<SDL_Texture>(frame, SDL_DestroyTexture);
-
         if (texture == nullptr)
         {
-            std::cout << "Failed to load texture: " << path << std::endl;
+            std::cout << "Failed to load texture: " << m_path << std::endl;
             std::cout << "SDL Error: " << SDL_GetError() << std::endl;
-            return;
+            return false;
         }
 
         auto width = 0;
@@ -105,9 +114,12 @@ void Animation::load(const std::string &path)
 
         m_data.push_back(texture);
     }
+
+    this->m_is_loaded = true;
+    return true;
 }
 
-std::vector<std::shared_ptr<SDL_Texture>> Animation::get() const
+std::vector<std::shared_ptr<SDL_Texture>> &Animation::get_data()
 {
     return this->m_data;
 }
@@ -127,19 +139,26 @@ unsigned int Animation::get_frame_count() const
     return static_cast<unsigned int>(this->m_data.size());
 }
 
-// Sound
-void Sound::load(const std::string &path)
+AssetId Animation::get_type() const
 {
-    m_data = std::shared_ptr<Mix_Chunk>(Mix_LoadWAV(path.c_str()), Mix_FreeChunk);
+    return AssetId::ANIMATION;
+}
+
+// Sound
+bool Sound::load()
+{
+    m_data = std::shared_ptr<Mix_Chunk>(Mix_LoadWAV(m_path.c_str()), Mix_FreeChunk);
 
     if (m_data == nullptr)
     {
-        std::cout << "Failed to load sound: " << path << std::endl;
+        std::cout << "Failed to load sound: " << m_path << std::endl;
         std::cout << "SDL Error: " << SDL_GetError() << std::endl;
-        return;
+        return false;
     }
 
     Mix_VolumeChunk(m_data.get(), 32);
+    m_is_loaded = true;
+    return true;
 }
 
 void Sound::play() const
@@ -147,70 +166,70 @@ void Sound::play() const
     Mix_PlayChannel(-1, m_data.get(), 0);
 }
 
-// Music
-void Music::load(const std::string &path)
+AssetId Sound::get_type() const
 {
-    m_data = std::shared_ptr<Mix_Music>(Mix_LoadMUS(path.c_str()), Mix_FreeMusic);
+    return AssetId::SOUND;
+}
+
+// Music
+bool Music::load()
+{
+    m_data = std::shared_ptr<Mix_Music>(Mix_LoadMUS(m_path.c_str()), Mix_FreeMusic);
 
     if (m_data == nullptr)
     {
-        std::cout << "Failed to load music: " << path << std::endl;
+        std::cout << "Failed to load music: " << m_path << std::endl;
         std::cout << "SDL Error: " << SDL_GetError() << std::endl;
-        return;
+        return false;
     }
 
     Mix_VolumeMusic(32);
+
+    m_is_loaded = true;
+
+    return true;
 }
 
-void Music::play() const
+std::shared_ptr<Mix_Music> Music::get_data() const
 {
-    Mix_PlayMusic(m_data.get(), -1);
+    return m_data;
 }
 
-void Music::stop() const
+AssetId Music::get_type() const
 {
-    Mix_HaltMusic();
-}
-
-void Music::pause() const
-{
-    if (Mix_PausedMusic() == 1)
-    {
-        Mix_ResumeMusic();
-    }
-    else
-    {
-        Mix_PauseMusic();
-    }
-}
-
-void Music::set_volume(int volume) const
-{
-    Mix_VolumeMusic(volume);
-}
-
-bool Music::is_playing() const
-{
-    return Mix_PlayingMusic() == 1;
+    return AssetId::MUSIC;
 }
 
 // Font
-void Font::load(const std::string &path, unsigned int size)
+bool Font::load()
 {
-    m_data = std::shared_ptr<TTF_Font>(TTF_OpenFont(path.c_str(), size), TTF_CloseFont);
-    this->m_size = size;
+    m_data = std::shared_ptr<TTF_Font>(TTF_OpenFont(m_path.c_str(), m_size), TTF_CloseFont);
 
     if (m_data == nullptr)
     {
-        std::cout << "Failed to load font: " << path << std::endl;
+        std::cout << "Failed to load font: " << m_path << std::endl;
         std::cout << "SDL Error: " << SDL_GetError() << std::endl;
-        return;
+        return false;
     }
+
+    m_is_loaded = true;
+
+    return true;
 }
 
-std::shared_ptr<TTF_Font> Font::get() const
+void Font::set_size(unsigned int size)
 {
-    return this->m_data;
+    m_size = size;
 }
 
-} // namespace oshc::core::asset
+std::shared_ptr<TTF_Font> Font::get_data() const
+{
+    return m_data;
+}
+
+AssetId Font::get_type() const
+{
+    return AssetId::FONT;
+}
+
+} // namespace oshc::asset

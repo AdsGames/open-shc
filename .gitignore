@@ -55,3 +55,6 @@ compile_commands.json
 _deps
 assets/proprietary/*
 !assets/proprietary/README.md
+
+# Tools
+valgrind.log

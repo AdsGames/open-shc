@@ -13,20 +13,17 @@
 
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_mixer.h>
+
 #include <map>
+#include <memory>
 #include <string>
-#include <vector>
 
 #include "asset.h"
 
-namespace oshc::core::asset
+namespace oshc::asset
 {
 
-using TextureMap = std::map<std::string, Texture, std::less<>>;
-using AnimationMap = std::map<std::string, Animation, std::less<>>;
-using SoundMap = std::map<std::string, Sound, std::less<>>;
-using MusicMap = std::map<std::string, Music, std::less<>>;
-using FontMap = std::map<std::string, Font, std::less<>>;
+using AssetMap = std::map<std::string, std::shared_ptr<Asset>, std::less<>>;
 
 class AssetManager
 {
@@ -39,12 +36,24 @@ class AssetManager
     void init(const std::string &asset_config_path);
 
     /**
+     * @brief Destroy all assets
+     *
+     */
+    void destroy();
+
+    /**
+     * @brief Eager load all assets
+     *
+     */
+    void eager_load_asset() const;
+
+    /**
      * @brief Get a texture
      *
      * @param id Texture id
      * @return Texture
      */
-    Texture get_texture(const std::string &id);
+    std::shared_ptr<Texture> get_texture(const std::string &id);
 
     /**
      * @brief Get a animation
@@ -52,7 +61,7 @@ class AssetManager
      * @param id Animation id
      * @return Animation
      */
-    Animation get_animation(const std::string &id);
+    std::shared_ptr<Animation> get_animation(const std::string &id);
 
     /**
      * @brief Get a sound
@@ -60,7 +69,7 @@ class AssetManager
      * @param id Sound id
      * @return Sound
      */
-    Sound get_sound(const std::string &id);
+    std::shared_ptr<Sound> get_sound(const std::string &id);
 
     /**
      * @brief Get music
@@ -68,7 +77,7 @@ class AssetManager
      * @param id Music id
      * @return Music
      */
-    Music get_music(const std::string &id);
+    std::shared_ptr<Music> get_music(const std::string &id);
 
     /**
      * @brief Get font
@@ -76,35 +85,35 @@ class AssetManager
      * @param id Font id
      * @return Font
      */
-    Font get_font(const std::string &id);
+    std::shared_ptr<Font> get_font(const std::string &id);
 
     /**
-     * @brief Get all textures as ref
+     * @brief Get all assets
      *
      */
-    TextureMap &get_textures();
+    AssetMap &get_assets();
 
     /**
-     * @brief Get all animations as ref
+     * @brief Get asset count
      *
      */
-    AnimationMap &get_animations();
+    unsigned long get_asset_count() const;
+
+    /**
+     * @brief Get loaded asset count
+     *
+     */
+    unsigned long get_loaded_asset_count() const;
 
   private:
-    /// @brief Map of textures
-    TextureMap m_textures;
+    /**
+     * @brief Get variant from asset map
+     *
+     */
+    std::shared_ptr<Asset> get_asset(const std::string &id);
 
-    /// @brief Map of animations
-    AnimationMap m_animations;
-
-    /// @brief Map of sounds
-    SoundMap m_sounds;
-
-    /// @brief Map of music
-    MusicMap m_music;
-
-    /// @brief Map of fonts
-    FontMap m_fonts;
+    /// @brief Map of all assets
+    AssetMap m_assets;
 };
 
-} // namespace oshc::core::asset
+} // namespace oshc::asset

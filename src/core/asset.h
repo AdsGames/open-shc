@@ -16,10 +16,24 @@
 #include <SDL2/SDL_mixer.h>
 #include <SDL2/SDL_ttf.h>
 #include <memory>
+#include <thread>
 #include <vector>
 
-namespace oshc::core::asset
+namespace oshc::asset
 {
+
+/**
+ * @brief Asset type enum
+ *
+ */
+enum class AssetId
+{
+    TEXTURE,
+    ANIMATION,
+    SOUND,
+    MUSIC,
+    FONT
+};
 
 /**
  * @brief Base asset class
@@ -29,6 +43,43 @@ class Asset
 {
   public:
     virtual ~Asset() = default;
+
+    /**
+     * @brief Get is loaded
+     *
+     */
+    bool is_loaded() const;
+
+    /**
+     * @brief Set path
+     *
+     */
+    void set_path(const std::string_view &path);
+
+    /**
+     * @brief Get path
+     *
+     */
+    std::string get_path() const;
+
+    /**
+     * @brief Load asset
+     *
+     */
+    virtual bool load() = 0;
+
+    /**
+     * @brief Get type
+     *
+     */
+    virtual AssetId get_type() const = 0;
+
+  protected:
+    /// @breif Is asset loaded
+    bool m_is_loaded{false};
+
+    /// @brief Path to asset
+    std::string m_path{""};
 };
 
 /**
@@ -47,14 +98,14 @@ class Texture : public Asset
      * @return true Asset loaded successfully
      * @return false Asset failed to load
      */
-    bool load(const std::string &path);
+    bool load() override;
 
     /**
      * @brief Get a shared pointer to the texture
      *
      * @return std::shared_ptr<SDL_Texture>
      */
-    std::shared_ptr<SDL_Texture> get() const;
+    std::shared_ptr<SDL_Texture> get_data() const;
 
     /**
      * @brief Get width of texture
@@ -70,29 +121,22 @@ class Texture : public Asset
      */
     unsigned int get_height() const;
 
+    /**
+     * @brief Get type of asset
+     *
+     * @return AssetId
+     */
+    AssetId get_type() const override;
+
   private:
-    /**
-     * @brief Load a png texture from file
-     *
-     * @param path Path to texture
-     */
-    void load_png(const std::string &path);
-
-    /**
-     * @brief Load a tgx texture from file
-     *
-     * @param path Path to texture
-     */
-    void load_tgx(const std::string &path);
-
     /// @brief Shared pointer to underlying texture
-    std::shared_ptr<SDL_Texture> m_data;
+    std::shared_ptr<SDL_Texture> m_data{nullptr};
 
     /// @brief Width of texture
-    unsigned int m_width;
+    unsigned int m_width{0};
 
     /// @brief Height of texture
-    unsigned int m_height;
+    unsigned int m_height{0};
 };
 
 /**
@@ -109,14 +153,14 @@ class Animation : public Asset
      *
      * @param path
      */
-    void load(const std::string &path);
+    bool load() override;
 
     /**
      * @brief Get a vector of shared pointers to the textures
      *
      * @return std::vector<std::shared_ptr<SDL_Texture>>
      */
-    std::vector<std::shared_ptr<SDL_Texture>> get() const;
+    std::vector<std::shared_ptr<SDL_Texture>> &get_data();
 
     /**
      * @brief Get the width of the animation
@@ -139,18 +183,25 @@ class Animation : public Asset
      */
     unsigned int get_frame_count() const;
 
+    /**
+     * @brief Get type of asset
+     *
+     * @return AssetId
+     */
+    AssetId get_type() const override;
+
   private:
     /// @brief Vector of shared pointers to underlying textures
-    std::vector<std::shared_ptr<SDL_Texture>> m_data;
+    std::vector<std::shared_ptr<SDL_Texture>> m_data{nullptr};
 
     /// @brief Width of animation
-    unsigned int m_width;
+    unsigned int m_width{0};
 
     /// @brief Height of animation
-    unsigned int m_height;
+    unsigned int m_height{0};
 
     /// @brief Frame count of animation
-    unsigned int m_frame_count;
+    unsigned int m_frame_count{0};
 };
 
 /**
@@ -167,7 +218,7 @@ class Sound : public Asset
      *
      * @param path Path to sound file
      */
-    void load(const std::string &path);
+    bool load() override;
 
     /**
      * @brief Play sound
@@ -175,9 +226,16 @@ class Sound : public Asset
      */
     void play() const;
 
+    /**
+     * @brief Get type of asset
+     *
+     * @return AssetId
+     */
+    AssetId get_type() const override;
+
   private:
     /// @brief Shared pointer to underlying sound
-    std::shared_ptr<Mix_Chunk> m_data;
+    std::shared_ptr<Mix_Chunk> m_data{nullptr};
 };
 
 /**
@@ -194,40 +252,21 @@ class Music : public Asset
      *
      * @param path Path to music file
      */
-    void load(const std::string &path);
+    bool load() override;
 
     /**
-     * @brief Play music
+     * @brief Get a vector of shared pointers to the textures
      *
+     * @return Mix_Music
      */
-    void play() const;
+    std::shared_ptr<Mix_Music> get_data() const;
 
     /**
-     * @brief Pause music
+     * @brief Get type of asset
      *
+     * @return AssetId
      */
-    void pause() const;
-
-    /**
-     * @brief Stop music
-     *
-     */
-    void stop() const;
-
-    /**
-     * @brief Set the global music volume
-     *
-     * @param volume
-     */
-    void set_volume(int volume) const;
-
-    /**
-     * @brief Check if music is playing
-     *
-     * @return true Music is playing
-     * @return false Music is not playing
-     */
-    bool is_playing() const;
+    AssetId get_type() const override;
 
   private:
     /// @brief Shared pointer to underlying music
@@ -248,21 +287,34 @@ class Font : public Asset
      *
      * @param path Path to font file
      */
-    void load(const std::string &path, unsigned int size);
+    bool load() override;
 
     /**
      * @brief Get the font
      *
      * @return std::shared_ptr<TTF_Font>
      */
-    std::shared_ptr<TTF_Font> get() const;
+    std::shared_ptr<TTF_Font> get_data() const;
+
+    /**
+     * @brief Set size
+     *
+     */
+    void set_size(unsigned int size);
+
+    /**
+     * @brief Get type of asset
+     *
+     * @return AssetId
+     */
+    AssetId get_type() const override;
 
   private:
     /// @brief Shared pointer to underlying font
-    std::shared_ptr<TTF_Font> m_data;
+    std::shared_ptr<TTF_Font> m_data{nullptr};
 
     /// @brief Size of font
-    unsigned int m_size;
+    unsigned int m_size{0};
 };
 
-} // namespace oshc::core::asset
+} // namespace oshc::asset

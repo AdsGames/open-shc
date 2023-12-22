@@ -24,7 +24,7 @@ class AssetViewer
      * @brief Construct a new Asset Viewer object
      *
      */
-    AssetViewer();
+    AssetViewer() = default;
 
     /**
      * @brief Update asset viewer
@@ -39,11 +39,7 @@ class AssetViewer
     void render();
 
   private:
-    std::vector<std::string> m_textures;
-    std::vector<std::string> m_animations;
-
-    std::string m_current_texture;
-    std::string m_current_animation;
+    std::string m_current_asset{""};
 };
 
 } // namespace oshc::state

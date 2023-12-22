@@ -58,7 +58,9 @@ class StateMenu : public oshc::core::state::State
      * @brief Destroy state
      *
      */
-    void destroy() override{};
+    void destroy() override{
+        // Nothing to do
+    };
 
   private:
     AssetViewer m_asset_viewer;

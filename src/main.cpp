@@ -1,9 +1,17 @@
 #include <SDL2/SDL.h>
 
+#include <chrono>
 #include <iostream>
+#include <tracy/Tracy.hpp>
 #include <vector>
 
 #include "core/core.h"
+
+#define TRACY_ENABLE 1
+
+using namespace std::chrono_literals;
+using namespace std::chrono;
+constexpr nanoseconds timestep(16ms);
 
 /**
  * @brief Entry point for the program
@@ -16,10 +24,28 @@ int main(int argc, char **argv)
 {
     oshc::core::state_engine.set_next_state(oshc::core::state::ProgramState::STATE_INIT);
 
+    nanoseconds lag(0ns);
+    auto time_start = high_resolution_clock::now();
+
     while (oshc::core::state_engine.get_active_state_id() != oshc::core::state::ProgramState::STATE_EXIT)
     {
-        oshc::core::state_engine.update();
+        FrameMarkStart("Main Loop");
+
+        auto delta_time = high_resolution_clock::now() - time_start;
+        time_start = high_resolution_clock::now();
+        lag += duration_cast<nanoseconds>(delta_time);
+
+        while (lag >= timestep)
+        {
+            lag -= timestep;
+            FrameMarkStart("Main Loop - Update");
+            oshc::core::state_engine.update();
+            FrameMarkEnd("Main Loop - Update");
+        }
+
+        FrameMarkStart("Main Loop - Render");
         oshc::core::state_engine.render();
+        FrameMarkEnd("Main Loop - Render");
 
         // Check if esc pressed
         SDL_Event event;
@@ -37,7 +63,10 @@ int main(int argc, char **argv)
                 }
             }
         }
+        FrameMarkEnd("Main Loop");
     }
+
+    oshc::core::destroy();
 
     return 0;
 }

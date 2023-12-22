@@ -18,6 +18,7 @@
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL_mixer.h>
 #include <iostream>
+#include <memory>
 
 namespace oshc::core
 {
@@ -25,13 +26,13 @@ namespace oshc::core
 // Accept global renderer
 
 /// @brief Global renderer
-extern SDL_Renderer *renderer;
+extern std::shared_ptr<SDL_Renderer> renderer;
 
 /// @brief Global window
-extern SDL_Window *window;
+extern std::shared_ptr<SDL_Window> window;
 
 /// @brief Global asset manager
-extern oshc::core::asset::AssetManager asset_manager;
+extern oshc::asset::AssetManager asset_manager;
 
 // @breif Global state engine
 extern oshc::core::state::StateEngine state_engine;
@@ -44,5 +45,11 @@ extern TTF_Font *dev_font;
  *
  */
 void init();
+
+/**
+ * @brief Destroy SDL2 and window
+ *
+ */
+void destroy();
 
 } // namespace oshc::core

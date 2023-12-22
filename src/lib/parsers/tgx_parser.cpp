@@ -7,44 +7,36 @@
 #include "../../core/core.h"
 
 // Convert 15 bit colour to 24 bit
-Uint32 TGXParser::convert_color(SDL_PixelFormat *pixel_format, unsigned char byte1, unsigned char byte2)
+Uint32 convert_color(unsigned char byte1, unsigned char byte2)
 {
     // Extract values
     unsigned char r = byte2 >> 2;
     unsigned char g = ((byte1 >> 5) & 0b00000111) | ((byte2 << 3) & 0b00011000);
     unsigned char b = byte1 & 0b00011111;
 
-    // Convert from 15 bit to 24
-    // Technically this will truncate the whites
-    //   but I can't think of a better solition
-    //   without involving float rounding.
-    r = r * 8;
-    g = g * 8;
-    b = b * 8;
-
     // Return new colour
-    return SDL_MapRGB(pixel_format, r, g, b);
+    return 255 | (r << 27) | (g << 19) | (b << 11);
 }
 
 // Look up address from pallette
-Uint32 TGXParser::pallete_lookup(SDL_PixelFormat *pixel_format, unsigned char addr, std::vector<unsigned int> *pall)
+Uint32 pallete_lookup(unsigned char addr, std::vector<unsigned int> *pall)
 {
     if (addr < pall->size())
     {
-        return pall->at(addr);
+        return (*pall)[addr];
     }
 
-    return SDL_MapRGB(pixel_format, 255, 0, 0);
+    return 255;
 }
 
 // Tgx helper used by file and memory
-SDL_Texture *TGXParser::load_tgx_helper(std::vector<unsigned char> *bytes, unsigned int *iter, unsigned int width,
-                                        unsigned int height, std::vector<unsigned int> *pall)
+std::shared_ptr<SDL_Texture> load_tgx_helper(std::vector<unsigned char> *bytes, unsigned int *iter, unsigned int width,
+                                             unsigned int height, std::vector<unsigned int> *pall)
 {
     // Make bitmap
-    SDL_PixelFormat *pixel_format = SDL_AllocFormat(SDL_PIXELFORMAT_RGBA8888);
-    SDL_Texture *texture =
-        SDL_CreateTexture(oshc::core::renderer, pixel_format->format, SDL_TEXTUREACCESS_STREAMING, width, height);
+    auto texture = std::shared_ptr<SDL_Texture>(SDL_CreateTexture(oshc::core::renderer.get(), SDL_PIXELFORMAT_RGBA8888,
+                                                                  SDL_TEXTUREACCESS_STREAMING, width, height),
+                                                SDL_DestroyTexture);
 
     if (texture == nullptr)
     {
@@ -55,7 +47,7 @@ SDL_Texture *TGXParser::load_tgx_helper(std::vector<unsigned char> *bytes, unsig
     // Lock and dump pixels
     Uint32 *pixels = nullptr;
     int pitch = 0;
-    if (SDL_LockTexture(texture, nullptr, (void **)&pixels, &pitch))
+    if (SDL_LockTexture(texture.get(), nullptr, (void **)&pixels, &pitch))
     {
         std::cout << "Failed to lock texture: " << SDL_GetError() << std::endl;
         return nullptr;
@@ -64,6 +56,7 @@ SDL_Texture *TGXParser::load_tgx_helper(std::vector<unsigned char> *bytes, unsig
     // File iterator and image x and y
     unsigned int x = 0;
     unsigned int y = 0;
+    unsigned int y_offset = 0;
 
     // Parse file
     while (*iter < bytes->size())
@@ -73,8 +66,8 @@ SDL_Texture *TGXParser::load_tgx_helper(std::vector<unsigned char> *bytes, unsig
             break;
 
         // Extract token and length
-        int token = bytes->at(*iter) >> 5;
-        int length = (bytes->at(*iter) & 0b00011111) + 1;
+        int token = (*bytes)[*iter] >> 5;
+        int length = ((*bytes)[*iter] & 0b00011111) + 1;
 
         // Increment iter (consume token)
         *iter += 1;
@@ -91,10 +84,10 @@ SDL_Texture *TGXParser::load_tgx_helper(std::vector<unsigned char> *bytes, unsig
                 for (unsigned int t = x + length; x < t; x++)
                 {
                     // Get pixel position
-                    Uint32 pixel_pos = y * (pitch / sizeof(unsigned int)) + x;
-                    auto color1 = bytes->at(*iter);
-                    auto color2 = bytes->at(*iter + 1);
-                    pixels[pixel_pos] = convert_color(pixel_format, color1, color2);
+                    Uint32 pixel_pos = y_offset + x;
+                    auto color1 = (*bytes)[*iter];
+                    auto color2 = (*bytes)[*iter + 1];
+                    pixels[pixel_pos] = convert_color(color1, color2);
 
                     *iter += 2;
                 }
@@ -105,9 +98,9 @@ SDL_Texture *TGXParser::load_tgx_helper(std::vector<unsigned char> *bytes, unsig
                 for (unsigned int t = x + length; x < t; x++)
                 {
                     // Get pixel position
-                    Uint32 pixel_pos = y * (pitch / sizeof(unsigned int)) + x;
-                    auto color = bytes->at(*iter);
-                    pixels[pixel_pos] = pallete_lookup(pixel_format, color, pall);
+                    Uint32 pixel_pos = y_offset + x;
+                    auto color = (*bytes)[*iter];
+                    pixels[pixel_pos] = pallete_lookup(color, pall);
 
                     *iter += 1;
                 }
@@ -120,8 +113,8 @@ SDL_Texture *TGXParser::load_tgx_helper(std::vector<unsigned char> *bytes, unsig
 
             for (unsigned int t = x + length; x < t; x++)
             {
-                Uint32 pixel_pos = y * (pitch / sizeof(unsigned int)) + x;
-                pixels[pixel_pos] = SDL_MapRGBA(pixel_format, 0, 0, 0, 255);
+                Uint32 pixel_pos = y_offset + x;
+                pixels[pixel_pos] = 255;
             }
 
             break;
@@ -134,9 +127,8 @@ SDL_Texture *TGXParser::load_tgx_helper(std::vector<unsigned char> *bytes, unsig
             {
                 for (unsigned int t = x + length; x < t; x++)
                 {
-                    Uint32 pixel_pos = y * (pitch / sizeof(unsigned int)) + x;
-                    pixels[pixel_pos] = convert_color(pixel_format, (unsigned char)bytes->at(*iter),
-                                                      (unsigned char)bytes->at(*iter + 1));
+                    Uint32 pixel_pos = y_offset + x;
+                    pixels[pixel_pos] = convert_color((*bytes)[*iter], (*bytes)[*iter + 1]);
                 }
 
                 *iter += 2;
@@ -146,8 +138,8 @@ SDL_Texture *TGXParser::load_tgx_helper(std::vector<unsigned char> *bytes, unsig
             {
                 for (unsigned int t = x + length; x < t; x++)
                 {
-                    Uint32 pixel_pos = y * (pitch / sizeof(unsigned int)) + x;
-                    pixels[pixel_pos] = pallete_lookup(pixel_format, (unsigned char)bytes->at(*iter), pall);
+                    Uint32 pixel_pos = y_offset + x;
+                    pixels[pixel_pos] = pallete_lookup((*bytes)[*iter], pall);
                 }
 
                 *iter += 1;
@@ -160,12 +152,13 @@ SDL_Texture *TGXParser::load_tgx_helper(std::vector<unsigned char> *bytes, unsig
             // Fill rest of line
             for (; x < width; x++)
             {
-                Uint32 pixel_pos = y * (pitch / sizeof(unsigned int)) + x;
-                pixels[pixel_pos] = SDL_MapRGBA(pixel_format, 0, 0, 0, 255);
+                Uint32 pixel_pos = y_offset + x;
+                pixels[pixel_pos] = 255;
             }
 
             // New line
             y += 1;
+            y_offset = y * (pitch / sizeof(unsigned int));
             x = 0;
 
             break;
@@ -177,14 +170,14 @@ SDL_Texture *TGXParser::load_tgx_helper(std::vector<unsigned char> *bytes, unsig
         }
     }
 
-    SDL_UnlockTexture(texture);
+    SDL_UnlockTexture(texture.get());
 
     // Return bmp
     return texture;
 }
 
 // Load tgx from file
-SDL_Texture *TGXParser::load_tgx(const std::string &filename)
+std::shared_ptr<SDL_Texture> load_tgx(const std::string &filename)
 {
     // Create file
     std::ifstream file(filename, std::ios::binary | std::ios::ate);
@@ -204,12 +197,14 @@ SDL_Texture *TGXParser::load_tgx(const std::string &filename)
     file.read(reinterpret_cast<char *>(bytes.data()), length);
 
     // Header
-    unsigned int width = bytes.at(0) + 256 * bytes.at(1);
-    unsigned int height = bytes.at(4) + 256 * bytes.at(5);
+    unsigned int width = bytes[0] + 256 * bytes[1];
+    unsigned int height = bytes[4] + 256 * bytes[5];
 
     // Iterator start position
     unsigned int iter = 8;
 
     // Return new image
-    return load_tgx_helper(&bytes, &iter, width, height);
+    auto res = load_tgx_helper(&bytes, &iter, width, height);
+
+    return res;
 }
