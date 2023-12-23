@@ -38,4 +38,11 @@ void draw_text(const std::string &font_id, const std::string &text, const int x,
  */
 void draw_animation(const std::string &animation_id, const SDL_Rect &rect, const unsigned int frame = 0);
 
+/**
+ * @brief Create texture
+ *
+ */
+std::shared_ptr<SDL_Texture> create_texture(const int width, const int height, const SDL_PixelFormatEnum format,
+                                            const SDL_TextureAccess access);
+
 } // namespace oshc::render

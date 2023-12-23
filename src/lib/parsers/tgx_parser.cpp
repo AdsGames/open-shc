@@ -3,6 +3,7 @@
 #include <SDL2/SDL.h>
 #include <fstream>
 #include <iostream>
+#include <tracy/Tracy.hpp>
 
 #include "../../core/core.h"
 
@@ -16,17 +17,6 @@ Uint32 convert_color(unsigned char byte1, unsigned char byte2)
 
     // Return new colour
     return 255 | (r << 27) | (g << 19) | (b << 11);
-}
-
-// Look up address from pallette
-Uint32 pallete_lookup(unsigned char addr, std::vector<unsigned int> *pall)
-{
-    if (addr < pall->size())
-    {
-        return (*pall)[addr];
-    }
-
-    return 255;
 }
 
 // Tgx helper used by file and memory
@@ -63,7 +53,9 @@ std::shared_ptr<SDL_Texture> load_tgx_helper(std::vector<unsigned char> *bytes, 
     {
         // Close
         if (y >= height)
+        {
             break;
+        }
 
         // Extract token and length
         int token = (*bytes)[*iter] >> 5;
@@ -100,7 +92,7 @@ std::shared_ptr<SDL_Texture> load_tgx_helper(std::vector<unsigned char> *bytes, 
                     // Get pixel position
                     Uint32 pixel_pos = y_offset + x;
                     auto color = (*bytes)[*iter];
-                    pixels[pixel_pos] = pallete_lookup(color, pall);
+                    pixels[pixel_pos] = (*pall)[color];
 
                     *iter += 1;
                 }
@@ -139,7 +131,8 @@ std::shared_ptr<SDL_Texture> load_tgx_helper(std::vector<unsigned char> *bytes, 
                 for (unsigned int t = x + length; x < t; x++)
                 {
                     Uint32 pixel_pos = y_offset + x;
-                    pixels[pixel_pos] = pallete_lookup((*bytes)[*iter], pall);
+                    auto color = (*bytes)[*iter];
+                    pixels[pixel_pos] = (*pall)[color];
                 }
 
                 *iter += 1;
@@ -179,7 +172,7 @@ std::shared_ptr<SDL_Texture> load_tgx_helper(std::vector<unsigned char> *bytes, 
 // Load tgx from file
 std::shared_ptr<SDL_Texture> load_tgx(const std::string &filename)
 {
-    // Create file
+    // Open the file
     std::ifstream file(filename, std::ios::binary | std::ios::ate);
 
     if (!file.is_open())
@@ -187,14 +180,18 @@ std::shared_ptr<SDL_Texture> load_tgx(const std::string &filename)
         return nullptr;
     }
 
+    // Get the file size
     std::ifstream::pos_type length = file.tellg();
 
-    // Vector to dump file into
+    // Vector to store file contents
     std::vector<unsigned char> bytes(length);
 
-    // Read the file
+    // Read the file contents into the vector
     file.seekg(0, std::ios::beg);
     file.read(reinterpret_cast<char *>(bytes.data()), length);
+
+    // Close the file
+    file.close();
 
     // Header
     unsigned int width = bytes[0] + 256 * bytes[1];
@@ -204,7 +201,5 @@ std::shared_ptr<SDL_Texture> load_tgx(const std::string &filename)
     unsigned int iter = 8;
 
     // Return new image
-    auto res = load_tgx_helper(&bytes, &iter, width, height);
-
-    return res;
+    return load_tgx_helper(&bytes, &iter, width, height);
 }

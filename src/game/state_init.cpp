@@ -4,6 +4,8 @@
 #include "../core/music_player.h"
 #include "../core/render.h"
 
+#define LAZY_LOAD true
+
 namespace oshc::state
 {
 
@@ -21,7 +23,7 @@ void StateInit::update()
     m_loading_percent = static_cast<float>(oshc::core::asset_manager.get_loaded_asset_count()) /
                         static_cast<float>(oshc::core::asset_manager.get_asset_count());
 
-    if (oshc::core::asset_manager.get_loaded_asset_count() == oshc::core::asset_manager.get_asset_count())
+    if (oshc::core::asset_manager.get_loaded_asset_count() == oshc::core::asset_manager.get_asset_count() || LAZY_LOAD)
     {
         oshc::core::state_engine.set_next_state(oshc::core::state::ProgramState::STATE_MENU);
     }
@@ -30,7 +32,6 @@ void StateInit::update()
 void StateInit::render()
 {
     oshc::render::draw_texture("frontend_loading", SDL_Rect{0, 0, 1280, 960});
-    oshc::render::draw_animation("anim_brewer", SDL_Rect{0, 0, 200, 200}, m_frame++);
 
     // Draw loading bar
     auto loading_bar_width = 500;

@@ -64,9 +64,6 @@ class StateInit : public oshc::core::state::State
   private:
     /// @brief Loading percent
     float m_loading_percent = 0.0f;
-
-    /// @brief Animation frame
-    unsigned int m_frame = 0;
 };
 
 } // namespace oshc::state

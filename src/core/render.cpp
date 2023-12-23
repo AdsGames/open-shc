@@ -57,4 +57,19 @@ void draw_text(const std::string &font_id, const std::string &text, const int x,
     SDL_DestroyTexture(text_texture);
 }
 
+std::shared_ptr<SDL_Texture> create_texture(const int width, const int height, const SDL_PixelFormatEnum format,
+                                            const SDL_TextureAccess access)
+{
+    auto texture = std::shared_ptr<SDL_Texture>(
+        SDL_CreateTexture(oshc::core::renderer.get(), format, access, width, height), SDL_DestroyTexture);
+
+    if (texture == nullptr)
+    {
+        std::cout << "Failed to create texture: " << SDL_GetError() << std::endl;
+        return nullptr;
+    }
+
+    return texture;
+}
+
 } // namespace oshc::render

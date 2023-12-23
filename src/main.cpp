@@ -7,8 +7,6 @@
 
 #include "core/core.h"
 
-#define TRACY_ENABLE 1
-
 using namespace std::chrono_literals;
 using namespace std::chrono;
 constexpr nanoseconds timestep(16ms);

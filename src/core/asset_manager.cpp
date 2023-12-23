@@ -79,7 +79,6 @@ void AssetManager::destroy()
 // Eager load one asset
 void AssetManager::eager_load_asset() const
 {
-
     for (auto &[_, curr] : this->m_assets)
     {
         if (!curr->is_loaded())

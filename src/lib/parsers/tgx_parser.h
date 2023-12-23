@@ -21,6 +21,3 @@ std::shared_ptr<SDL_Texture> load_tgx_helper(std::vector<unsigned char> *bytes, 
 
 // Convert 15 bit to 24 colour
 Uint32 convert_color(unsigned char byte1, unsigned char byte2);
-
-// Look up colour from pallete
-Uint32 pallete_lookup(unsigned char addr, std::vector<unsigned int> *pall);

@@ -25,6 +25,7 @@ void StateMenu::render()
 {
     oshc::render::draw_texture("frontend_main", SDL_Rect{0, 0, 1280, 960});
     oshc::render::draw_texture("ads_logo", SDL_Rect{0, 0, 123, 123});
+    oshc::render::draw_animation("interface_buttons", SDL_Rect{0, 0, 123, 123}, 7);
 
     // m_asset_viewer.render();
 }
